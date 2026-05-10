@@ -185,10 +185,49 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td class="feature-col">Pre-session behavioral check-in</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">checklist only</td><td class="our-col yes">✓</td></tr>
-          <tr><td class="feature-col">Personal danger-zone alerts</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">lot calc only</td><td class="our-col yes">✓</td></tr>
-          <tr><td class="feature-col">Mental state → outcome correlation</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td></tr>
-          <tr><td class="feature-col">Behavioral pattern detection (trader-specific)</td><td class="no">✕</td><td class="no">✕</td><td class="partial">basic stats</td><td class="partial">generic coaching</td><td class="our-col yes">✓</td></tr>
+          <tr>
+            <td class="feature-col">
+              <div class="gap-feature-cell">
+                <span class="gap-feature-name">Pre-session behavioral check-in</span>
+                <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-1">Why</button>
+              </div>
+            </td>
+            <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">checklist only</td><td class="our-col yes">✓</td>
+          </tr>
+          <tr class="gap-row-why" id="why-1"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> The decisions that blow up a session are made <em>before</em> it starts. Sleep, focus, plan — these inputs predict your sizing more than anything that happens on the chart.</div></td></tr>
+
+          <tr>
+            <td class="feature-col">
+              <div class="gap-feature-cell">
+                <span class="gap-feature-name">Personal danger-zone alerts</span>
+                <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-2">Why</button>
+              </div>
+            </td>
+            <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">lot calc only</td><td class="our-col yes">✓</td>
+          </tr>
+          <tr class="gap-row-why" id="why-2"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Most blowups aren't one bad trade — they're three open positions that <em>together</em> exceed the limit. A per-trade calculator can't see this.</div></td></tr>
+
+          <tr>
+            <td class="feature-col">
+              <div class="gap-feature-cell">
+                <span class="gap-feature-name">Mental state → outcome correlation</span>
+                <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-3">Why</button>
+              </div>
+            </td>
+            <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td>
+          </tr>
+          <tr class="gap-row-why" id="why-3"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> "I traded worse when tired" is a hunch. Connecting mood, sleep, and pressure to actual session outcomes turns the hunch into a rule you'll follow.</div></td></tr>
+
+          <tr>
+            <td class="feature-col">
+              <div class="gap-feature-cell">
+                <span class="gap-feature-name">Behavioral pattern detection (trader-specific)</span>
+                <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-4">Why</button>
+              </div>
+            </td>
+            <td class="no">✕</td><td class="no">✕</td><td class="partial">basic stats</td><td class="partial">generic coaching</td><td class="our-col yes">✓</td>
+          </tr>
+          <tr class="gap-row-why" id="why-4"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Generic advice ("size down after a loss") is easy to ignore. A pattern named with your data — your trigger, your sequence, your historical cost — is harder to.</div></td></tr>
         </tbody>
       </table>
     </div>
@@ -196,10 +235,114 @@
   </div>
 </div>
 
+<!-- SAMPLE WEEKLY REPORT -->
+<div class="report-section" id="weekly-report">
+  <div class="report-inner">
+    <div class="report-head">
+      <div class="section-tag" style="justify-content:center;"><span class="ch">03</span>Sample weekly report</div>
+      <h2>Every Sunday,<br>your week in <em>one page.</em></h2>
+      <p class="gap-sub">Not a generic dashboard — your specific failure conditions, named with dollar costs and one rule to try this week. Here's an actual report.</p>
+    </div>
+
+    <div class="report-card">
+      <div class="report-bar">
+        <div class="report-bar-l">
+          <div class="vdots"><span></span><span></span><span></span></div>
+          <span class="report-bar-name">PsyRule · weekly behavioral report</span>
+        </div>
+        <div class="report-bar-meta">Trader: <strong>you</strong> · FTMO 100k · sent Sunday 18:00</div>
+      </div>
+
+      <div class="report-body">
+        <div class="report-hero">
+          <div>
+            <div class="report-week">Week 17 · Apr 14 – Apr 20</div>
+            <div class="report-headline">You broke even on P&amp;L —<br>but <em>three rule breaks</em><br>did the damage.</div>
+          </div>
+          <div class="report-kpis">
+            <div class="report-kpi"><div class="report-kpi-l">Net P&amp;L</div><div class="report-kpi-v">+$84</div></div>
+            <div class="report-kpi"><div class="report-kpi-l">Behavioral cost</div><div class="report-kpi-v red">−$1,140</div></div>
+            <div class="report-kpi"><div class="report-kpi-l">Sessions</div><div class="report-kpi-v">9</div></div>
+            <div class="report-kpi"><div class="report-kpi-l">Rule breaks</div><div class="report-kpi-v red">3</div></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="report-block-tag">Cost by pattern</div>
+          <h3 class="report-block-h">Where the money <em>actually</em> went.</h3>
+          <div class="report-pattern-list">
+            <div class="report-pattern">
+              <div class="report-pat-row"><strong>Revenge loop · Tue, Thu</strong><span class="report-pat-amt">−$624</span></div>
+              <div class="report-pat-bar"><div class="report-pat-fill" style="width:88%"></div></div>
+              <div class="report-pat-row"><span>2 events · re-entered within 6 min after stop-out</span></div>
+            </div>
+            <div class="report-pattern">
+              <div class="report-pat-row"><strong>Late-session decay</strong><span class="report-pat-amt">−$348</span></div>
+              <div class="report-pat-bar"><div class="report-pat-fill amber" style="width:54%"></div></div>
+              <div class="report-pat-row"><span>4 trades after 16:00 · win rate 25%</span></div>
+            </div>
+            <div class="report-pattern">
+              <div class="report-pat-row"><strong>Green-day giveback · Wed</strong><span class="report-pat-amt">−$168</span></div>
+              <div class="report-pat-bar"><div class="report-pat-fill gray" style="width:28%"></div></div>
+              <div class="report-pat-row"><span>+$240 by 11:00 → −$72 close · 3 unplanned trades</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="report-block-tag">When you traded well, when you didn't</div>
+          <h3 class="report-block-h">Your <em>edge window</em>: 09:00–13:00.</h3>
+          <div class="report-heatmap">
+            <div class="report-hm-h"></div>
+            <div class="report-hm-d">Mon</div><div class="report-hm-d">Tue</div><div class="report-hm-d">Wed</div><div class="report-hm-d">Thu</div><div class="report-hm-d">Fri</div><div class="report-hm-d">Sat</div><div class="report-hm-d">Sun</div>
+
+            <div class="report-hm-h">07</div>
+            <div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div>
+
+            <div class="report-hm-h">09</div>
+            <div class="report-hm-cell" data-v="3"></div><div class="report-hm-cell" data-v="2"></div><div class="report-hm-cell" data-v="4"></div><div class="report-hm-cell" data-v="3"></div><div class="report-hm-cell" data-v="2"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div>
+
+            <div class="report-hm-h">11</div>
+            <div class="report-hm-cell" data-v="2"></div><div class="report-hm-cell" data-v="-2"></div><div class="report-hm-cell" data-v="3"></div><div class="report-hm-cell" data-v="-3"></div><div class="report-hm-cell" data-v="2"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div>
+
+            <div class="report-hm-h">13</div>
+            <div class="report-hm-cell" data-v="1"></div><div class="report-hm-cell" data-v="1"></div><div class="report-hm-cell" data-v="2"></div><div class="report-hm-cell" data-v="-1"></div><div class="report-hm-cell" data-v="1"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div>
+
+            <div class="report-hm-h">15</div>
+            <div class="report-hm-cell" data-v="-1"></div><div class="report-hm-cell" data-v="-1"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="-2"></div><div class="report-hm-cell" data-v="-1"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div>
+
+            <div class="report-hm-h">17</div>
+            <div class="report-hm-cell" data-v="-2"></div><div class="report-hm-cell" data-v="-2"></div><div class="report-hm-cell" data-v="-1"></div><div class="report-hm-cell" data-v="-3"></div><div class="report-hm-cell" data-v="-2"></div><div class="report-hm-cell" data-v="0"></div><div class="report-hm-cell" data-v="0"></div>
+          </div>
+          <div class="report-hm-legend">
+            <span>Loss</span>
+            <div class="report-hm-legend-bar">
+              <span style="background:#8b1a1a"></span><span style="background:#d88e7e"></span><span style="background:#f0d6cc"></span><span style="background:#efece5"></span><span style="background:#d8e4dc"></span><span style="background:#a6c4b4"></span><span style="background:#5c8a73"></span><span style="background:#1a5c3e"></span>
+            </div>
+            <span>Win</span>
+          </div>
+        </div>
+
+        <div class="report-rule">
+          <div>
+            <div class="report-rule-tag">Recommended rule for week 18</div>
+            <div class="report-rule-h">Stop trading at 16:00 sharp.<br><em>Estimated saved: $480/wk.</em></div>
+            <div class="report-rule-sub">Your win rate drops from <strong>61%</strong> (08:00–14:00) to <strong>28%</strong> after 16:00. You traded past 16:00 on <strong>4 of 5 days</strong> last week — every one of those trades was a loser.</div>
+          </div>
+          <div class="report-rule-actions">
+            <button class="report-rule-btn" type="button">Add this rule</button>
+            <button class="report-rule-btn ghost" type="button">See alternatives</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- PRICING -->
 <div class="pricing-section" id="pricing">
   <div class="pricing-head">
-    <div class="section-tag" style="justify-content:center;"><span class="ch">03</span>Pricing</div>
+    <div class="section-tag" style="justify-content:center;"><span class="ch">04</span>Pricing</div>
     <h2>One plan. <em>Founding price.</em></h2>
     <p>Locked for life for the first 100 customers.</p>
   </div>
@@ -249,6 +392,19 @@
   </div>
   <div class="foot-note">© 2026 PsyRule</div>
 </footer>
+
+<script>
+  document.querySelectorAll('.why-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('aria-controls');
+      var row = document.getElementById(id);
+      if (!row) return;
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      row.classList.toggle('is-open', !open);
+    });
+  });
+</script>
 
 </body>
 </html>
