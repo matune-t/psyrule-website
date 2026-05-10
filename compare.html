@@ -31,7 +31,7 @@
 <div class="page-hero">
   <div class="hero-eyebrow"><span class="hero-pulse"></span> Compare</div>
   <h1>Every other tool logs<br>what happened.<br><em>PsyRule explains why.</em></h1>
-  <p class="hero-note" style="font-size:15px;max-width:600px;margin:24px auto 0;line-height:1.6;">Eleven capabilities, side-by-side. The behavioral ones are the rows nobody else builds.</p>
+  <p class="hero-note" style="font-size:15px;max-width:600px;margin:24px auto 0;line-height:1.6;">Eleven capabilities, side-by-side. Tap <span style="white-space:nowrap;border:1px solid var(--border2);border-radius:999px;padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);">? Why</span> on any row to see why it matters.</p>
 </div>
 
 <section class="page-section" style="margin-top:32px;">
@@ -48,40 +48,132 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td class="feature-col">Pre-session behavioral check-in</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">checklist only</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> The decisions that blow up a session are made <em>before</em> it starts. Sleep, focus, plan — these inputs predict your sizing more than anything that happens on the chart.</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Pre-session behavioral check-in</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c1">Why</button>
+            </div>
+          </td>
+          <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">checklist only</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c1"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> The decisions that blow up a session are made <em>before</em> it starts. Sleep, focus, plan — these inputs predict your sizing more than anything that happens on the chart.</div></td></tr>
 
-        <tr><td class="feature-col">Automatic trade sync (MT4/MT5/cTrader)</td><td class="yes">✓</td><td class="partial">CSV only</td><td class="yes">✓</td><td class="no">✕</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Manual logging is where journaling dies. If sync isn't real-time, you only review behavior after damage is done — never during.</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Automatic trade sync (MT4/MT5/cTrader)</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c2">Why</button>
+            </div>
+          </td>
+          <td class="yes">✓</td><td class="partial">CSV only</td><td class="yes">✓</td><td class="no">✕</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c2"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Manual logging is where journaling dies. If sync isn't real-time, you only review behavior after damage is done — never during.</div></td></tr>
 
-        <tr><td class="feature-col">Personal danger-zone alerts</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">lot calc only</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Most blowups aren't one bad trade — they're three open positions that <em>together</em> exceed the limit. A per-trade calculator can't see this.</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Personal danger-zone alerts</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c3">Why</button>
+            </div>
+          </td>
+          <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">lot calc only</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c3"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Most blowups aren't one bad trade — they're three open positions that <em>together</em> exceed the limit. A per-trade calculator can't see this.</div></td></tr>
 
-        <tr><td class="feature-col">Mental state → session outcome correlation</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> "I traded worse when tired" is a hunch. Connecting mood, sleep, and pressure to actual session outcomes turns the hunch into a rule you'll follow.</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Mental state → session outcome correlation</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c4">Why</button>
+            </div>
+          </td>
+          <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c4"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> "I traded worse when tired" is a hunch. Connecting mood, sleep, and pressure to actual session outcomes turns the hunch into a rule you'll follow.</div></td></tr>
 
-        <tr><td class="feature-col">Behavioral pattern detection (trader-specific)</td><td class="no">✕</td><td class="no">✕</td><td class="partial">basic stats</td><td class="partial">generic coaching</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Generic advice ("size down after a loss") is easy to ignore. A pattern named with your data — your trigger, your sequence, your historical cost — is harder to.</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Behavioral pattern detection (trader-specific)</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c5">Why</button>
+            </div>
+          </td>
+          <td class="no">✕</td><td class="no">✕</td><td class="partial">basic stats</td><td class="partial">generic coaching</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c5"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Generic advice ("size down after a loss") is easy to ignore. A pattern named with your data — your trigger, your sequence, your historical cost — is harder to.</div></td></tr>
 
-        <tr><td class="feature-col">Prop firm challenge rule tracking</td><td class="no">✕</td><td class="no">✕</td><td class="partial">manual setup</td><td class="yes">✓</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Each prop firm has different daily/total/lot rules. Tracking these by hand is the first thing traders skip when stressed.</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Prop firm challenge rule tracking</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c6">Why</button>
+            </div>
+          </td>
+          <td class="no">✕</td><td class="no">✕</td><td class="partial">manual setup</td><td class="yes">✓</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c6"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Each prop firm has different daily/total/lot rules. Tracking these by hand is the first thing traders skip when stressed.</div></td></tr>
 
-        <tr><td class="feature-col">Revenge-trading sequence detection</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">timer only</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> A passive timer doesn't break the loop. Surfacing the trade's behavioral context — "this matches your revenge-trading pattern from 6 prior sessions" — at the moment of placement does.</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Revenge-trading sequence detection</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c7">Why</button>
+            </div>
+          </td>
+          <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">timer only</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c7"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> A passive timer doesn't break the loop. Surfacing the trade's behavioral context — "this matches your revenge-trading pattern from 6 prior sessions" — at the moment of placement does.</div></td></tr>
 
-        <tr><td class="feature-col">Weekly personalized behavioral report</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">generic AI</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Once a week your specific failure conditions, named with dollar costs. Not "improve discipline" — "stop trading after 16:00, that's costing $480/week".</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Weekly personalized behavioral report</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c8">Why</button>
+            </div>
+          </td>
+          <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">generic AI</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c8"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Once a week your specific failure conditions, named with dollar costs. Not "improve discipline" — "stop trading after 16:00, that's costing $480/week".</div></td></tr>
 
-        <tr><td class="feature-col">Session rule lock-in</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Soft-blocks fail because mid-session you talk yourself out of them. A 60-second cooldown + logged reason is enough friction to break the impulse.</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Session rule lock-in</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c9">Why</button>
+            </div>
+          </td>
+          <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c9"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Soft-blocks fail because mid-session you talk yourself out of them. A 60-second cooldown + logged reason is enough friction to break the impulse.</div></td></tr>
 
-        <tr><td class="feature-col">Proximity warnings ("92% of limit") vs raw numbers</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> "$460 of $500" is a number. "92% of your limit" triggers loss aversion. Same data, completely different behavior.</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Proximity warnings ("92% of limit") vs raw numbers</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c10">Why</button>
+            </div>
+          </td>
+          <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c10"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> "$460 of $500" is a number. "92% of your limit" triggers loss aversion. Same data, completely different behavior.</div></td></tr>
 
-        <tr><td class="feature-col">Behavioral cost tracker</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td></tr>
-        <tr class="gap-row-why"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Discipline is invisible — you only see the losses you took, not the recurring patterns behind them. PsyRule names the cost of each behavioral loop so you can decide which one to fix first.</div></td></tr>
+        <tr>
+          <td class="feature-col">
+            <div class="gap-feature-cell">
+              <span class="gap-feature-name">Behavioral cost tracker</span>
+              <button class="why-toggle" type="button" aria-expanded="false" aria-controls="why-c11">Why</button>
+            </div>
+          </td>
+          <td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td>
+        </tr>
+        <tr class="gap-row-why" id="why-c11"><td colspan="6"><div class="gap-row-why-inner"><strong>Why it matters:</strong> Discipline is invisible — you only see the losses you took, not the recurring patterns behind them. PsyRule names the cost of each behavioral loop so you can decide which one to fix first.</div></td></tr>
       </tbody>
     </table>
+  </div>
+  <div class="compare-actions">
+    <button class="btn-g" type="button" id="why-expand-all">Expand all reasons</button>
+    <button class="btn-g" type="button" id="why-collapse-all" style="display:none;">Collapse all</button>
   </div>
   <p class="gap-note">* Competitive data based on public feature listings as of May 2026.</p>
 </section>
@@ -104,6 +196,43 @@
   </div>
   <div class="foot-note">© 2026 PsyRule</div>
 </footer>
+
+<script>
+  document.querySelectorAll('.why-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id = btn.getAttribute('aria-controls');
+      var row = document.getElementById(id);
+      if (!row) return;
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      row.classList.toggle('is-open', !open);
+      syncBulkButtons();
+    });
+  });
+
+  var expandBtn = document.getElementById('why-expand-all');
+  var collapseBtn = document.getElementById('why-collapse-all');
+  function setAll(open){
+    document.querySelectorAll('.why-toggle').forEach(function(btn){
+      var id = btn.getAttribute('aria-controls');
+      var row = document.getElementById(id);
+      if (!row) return;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      row.classList.toggle('is-open', open);
+    });
+    syncBulkButtons();
+  }
+  function syncBulkButtons(){
+    if (!expandBtn || !collapseBtn) return;
+    var total = document.querySelectorAll('.why-toggle').length;
+    var open = document.querySelectorAll('.why-toggle[aria-expanded="true"]').length;
+    var allOpen = total > 0 && open === total;
+    expandBtn.style.display = allOpen ? 'none' : '';
+    collapseBtn.style.display = allOpen ? '' : 'none';
+  }
+  if (expandBtn) expandBtn.addEventListener('click', function(){ setAll(true); });
+  if (collapseBtn) collapseBtn.addEventListener('click', function(){ setAll(false); });
+</script>
 
 </body>
 </html>
