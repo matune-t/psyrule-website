@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PsyRule — How it works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,500..800,50;1,9..144,500..800,50&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="psyrule.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-shell">
+    <a href="index.html" class="logo" aria-label="PsyRule home">
+      <div class="logo-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M 12.33 5.5 A 5 5 0 1 0 12.33 10.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M 13.2 5 L 10.6 11" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+      <span>Psy<em style="font-style:italic;color:#1a5c3e;font-family:'Fraunces',serif;font-weight:800">Rule</em></span>
+    </a>
+    <div class="nav-r">
+      <a href="how-it-works.html" class="nav-link active">How it works</a>
+      <a href="compare.html" class="nav-link">Compare</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="/login" class="nav-link">Log in</a>
+      <a href="/signup" class="nav-btn">Sign up</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-eyebrow"><span class="hero-pulse"></span> How it works</div>
+  <h1>From pre-session check-in<br>to <em>live intervention.</em></h1>
+  <p class="hero-note" style="font-size:15px;max-width:600px;margin:24px auto 0;line-height:1.6;">PsyRule reads your trade sync and your check-in answers, names the loops it sees in your history, and surfaces them before the next instance.</p>
+</div>
+
+<section class="page-section">
+  <h2>What it watches</h2>
+  <p class="lede">PsyRule needs three things to learn your patterns: your trade history, a 30-second pre-session check-in, and time. The first 2–3 weeks it's mostly listening — measuring your normal re-entry time, your normal sizing, your normal post-loss behavior. Then the rules sharpen.</p>
+
+  <div class="how-flow">
+    <div class="how-flow-line"></div>
+    <div class="how-step">
+      <div class="how-step-num">01</div>
+      <div class="how-step-card">
+        <div class="how-step-tag">Check in before trading</div>
+        <h3 class="how-step-title">Two minutes <em>before</em> the session.</h3>
+        <p class="how-step-body">Log mood, confidence, fatigue, and risk temptation before the session starts. The inputs that change your sizing — recorded while you're thinking clearly.</p>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">02</div>
+      <div class="how-step-card">
+        <div class="how-step-tag">Trade with rules visible</div>
+        <h3 class="how-step-title">Your limits stay <em>in view</em> as pressure builds.</h3>
+        <p class="how-step-body">Personal limits, challenge rules, and risk thresholds are anchored on screen. Once the session starts, they lock in — bypass requires a 60-second cooldown and a logged reason.</p>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">03</div>
+      <div class="how-step-card">
+        <div class="how-step-tag">Detect behavior shifts</div>
+        <h3 class="how-step-title">PsyRule watches for the <em>discipline leaks</em>.</h3>
+        <p class="how-step-body">Faster re-entry after a loss, size increases after a stop-out, overtrading after profit. Each leak is matched against your own historical pattern — not a generic threshold.</p>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">04</div>
+      <div class="how-step-card">
+        <div class="how-step-tag">Interrupt the loop</div>
+        <h3 class="how-step-title"><em>Friction</em>, not blocking.</h3>
+        <p class="how-step-body">Cooldowns, confirmations, and warnings tied to your personal history. PsyRule doesn't stop the trade — it surfaces what the trade has cost you the last time the same loop ran.</p>
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="how-step-num">05</div>
+      <div class="how-step-card">
+        <div class="how-step-tag">Review the pattern</div>
+        <h3 class="how-step-title">After the session, <em>see the sequence.</em></h3>
+        <p class="how-step-body">What happened, why it happened, and which rule would reduce the same mistake next time. Patterns become rules. Rules become a discipline profile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section" id="patterns">
+  <h2>The four patterns it knows by name</h2>
+  <p class="lede">Behavioral loops are not abstract. Each has a sequence, a trigger, and a cost — and PsyRule names yours specifically.</p>
+
+  <div class="pattern-grid">
+    <div class="pattern-card">
+      <div class="pattern-card-num">01</div>
+      <div class="pattern-card-title">Revenge loop</div>
+      <div class="pattern-card-seq">
+        <span>First loss</span><span class="pcs-arrow">→</span>
+        <span>shorter wait</span><span class="pcs-arrow">→</span>
+        <span>larger size</span><span class="pcs-arrow">→</span>
+        <span class="pcs-end">second loss</span>
+      </div>
+      <div class="pattern-card-line"></div>
+      <p class="pattern-card-body">A losing trade compresses your re-entry time and inflates your sizing. The second trade is rarely the recovery you imagined.</p>
+      <div class="pattern-card-cost"><span class="pcc-label">Modeled cost</span><span class="pcc-amt">~$312</span><span class="pcc-unit">avg per detected event</span></div>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-card-num">02</div>
+      <div class="pattern-card-title">Green-day giveback</div>
+      <div class="pattern-card-seq">
+        <span>Early profit</span><span class="pcs-arrow">→</span>
+        <span>overconfidence</span><span class="pcs-arrow">→</span>
+        <span>extra trades</span><span class="pcs-arrow">→</span>
+        <span class="pcs-end">profit gone</span>
+      </div>
+      <div class="pattern-card-line"></div>
+      <p class="pattern-card-body">A winning open lowers your selection bar. You take setups you would have skipped on a flat day, and the day's gain quietly disappears.</p>
+      <div class="pattern-card-cost"><span class="pcc-label">Modeled cost</span><span class="pcc-amt">~$184</span><span class="pcc-unit">avg giveback per green day</span></div>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-card-num">03</div>
+      <div class="pattern-card-title">Late-session decay</div>
+      <div class="pattern-card-seq">
+        <span>Focus drops</span><span class="pcs-arrow">→</span>
+        <span>weaker setups</span><span class="pcs-arrow">→</span>
+        <span class="pcs-end">emotional trades</span>
+      </div>
+      <div class="pattern-card-line"></div>
+      <p class="pattern-card-body">Past a personal cutoff your win rate drops sharply, but the trades keep coming. The decay is in attention, not in the market.</p>
+      <div class="pattern-card-cost"><span class="pcc-label">Modeled cost</span><span class="pcc-amt">~$96</span><span class="pcc-unit">avg loss per late-window trade</span></div>
+    </div>
+    <div class="pattern-card">
+      <div class="pattern-card-num">04</div>
+      <div class="pattern-card-title">Challenge pressure</div>
+      <div class="pattern-card-seq">
+        <span>Near target</span><span class="pcs-arrow">→</span>
+        <span>fear of giving back</span><span class="pcs-arrow">→</span>
+        <span class="pcs-end">forced setups</span>
+      </div>
+      <div class="pattern-card-line"></div>
+      <p class="pattern-card-body">Within reach of the target, every setup looks like the one that closes it out. The forcing is what ends most challenges.</p>
+      <div class="pattern-card-cost"><span class="pcc-label">Modeled cost</span><span class="pcc-amt">~$2,000</span><span class="pcc-unit">a blown challenge fee, on average</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="page-section">
+  <h2>The proof, in <em>one chart</em></h2>
+  <p class="lede">One real session. Two lines. One moment of decision.</p>
+
+  <div class="curve-wrap">
+    <div class="curve-frame">
+      <div class="curve-grid">
+        <div class="chart-card">
+          <div class="chart-meta">
+            <strong>Session #142 · equity curve</strong>
+            <span>10:00 → 16:00</span>
+          </div>
+          <svg class="chart-svg" viewBox="0 0 600 220" preserveAspectRatio="none" aria-label="Equity curve with intervention point">
+            <line x1="0" y1="55"  x2="600" y2="55"  stroke="#d8d4cc" stroke-dasharray="2 4"/>
+            <line x1="0" y1="110" x2="600" y2="110" stroke="#d8d4cc" stroke-dasharray="2 4"/>
+            <line x1="0" y1="165" x2="600" y2="165" stroke="#d8d4cc" stroke-dasharray="2 4"/>
+            <path d="M 0 110 L 70 95 L 140 130 L 210 175 L 280 200 L 350 215 L 420 215" fill="none" stroke="#8b1a1a" stroke-width="1.5" stroke-dasharray="4 4" opacity=".55"/>
+            <text x="425" y="212" font-family="JetBrains Mono" font-size="9" fill="#8b1a1a" opacity=".75">if loop ran</text>
+            <path d="M 0 110 L 70 95 L 140 130 L 210 145 L 280 142 L 350 122 L 420 95 L 500 78 L 600 65" fill="none" stroke="#1a5c3e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <line x1="210" y1="20" x2="210" y2="200" stroke="#1a5c3e" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
+            <circle cx="210" cy="145" r="6" fill="#faf9f6" stroke="#1a5c3e" stroke-width="2"/>
+            <circle cx="210" cy="145" r="2.5" fill="#1a5c3e"/>
+            <text x="218" y="32" font-family="JetBrains Mono" font-size="9" fill="#1a5c3e" letter-spacing=".06em">PSYRULE FIRED · 11:02</text>
+            <circle cx="70" cy="95" r="3" fill="#1a5c3e"/>
+            <circle cx="140" cy="130" r="3" fill="#8b1a1a"/>
+            <circle cx="180" cy="142" r="3" fill="#8b1a1a"/>
+          </svg>
+          <div class="chart-axis">
+            <span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span><span>16:00</span>
+          </div>
+          <div class="chart-legend">
+            <span><span class="lg-line"></span>Actual session</span>
+            <span><span class="lg-line dash"></span>If the loop had run</span>
+          </div>
+        </div>
+
+        <div class="notes-stack">
+          <div class="curve-mn">
+            <div class="t">10:14 → 10:27</div>
+            <div class="h">Two stop-outs in <em>13 minutes.</em></div>
+            <p>Re-entry compressed from 12 min to 4. Size up 35%. The same sequence ran in 6 prior sessions — every time the third trade lost.</p>
+          </div>
+          <div class="curve-mn amber">
+            <div class="t">11:02 — moment of decision</div>
+            <div class="h">PsyRule named the loop <em>before</em> the third trade.</div>
+            <p>Not "you're tilted" — specifically: <em>this is your revenge loop, it has cost you $312 on average, hold 90 seconds.</em> The trader paused.</p>
+          </div>
+          <div class="curve-mn">
+            <div class="t">14:02 → 16:00</div>
+            <div class="h">Session closed <em>green.</em></div>
+            <p>The dashed line is what the trader's history said would have happened. The solid line is what did.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="page-cta">
+  <h2>Ready to see <em>your</em> patterns?</h2>
+  <a href="/signup" class="btn-p">Claim founding price · $19/mo</a>
+</div>
+
+<footer>
+  <div class="foot-logo">
+    <div class="foot-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M 12.33 5.5 A 5 5 0 1 0 12.33 10.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M 13.2 5 L 10.6 11" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+    PsyRule
+  </div>
+  <div class="foot-links">
+    <a href="index.html" class="foot-link">Home</a>
+    <a href="compare.html" class="foot-link">Compare</a>
+    <a href="faq.html" class="foot-link">FAQ</a>
+    <a href="mailto:hi@psyrule.com" class="foot-link">Contact</a>
+  </div>
+  <div class="foot-note">© 2026 PsyRule</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PsyRule — For traders who know it's behavioral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,500..800,50;1,9..144,500..800,50&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="psyrule.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-shell">
+    <a href="index.html" class="logo" aria-label="PsyRule home">
+      <div class="logo-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M 12.33 5.5 A 5 5 0 1 0 12.33 10.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M 13.2 5 L 10.6 11" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+      <span>Psy<em style="font-style:italic;color:#1a5c3e;font-family:'Fraunces',serif;font-weight:800">Rule</em></span>
+    </a>
+    <div class="nav-r">
+      <a href="how-it-works.html" class="nav-link">How it works</a>
+      <a href="compare.html" class="nav-link">Compare</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="faq.html" class="nav-link">FAQ</a>
+      <a href="/login" class="nav-link">Log in</a>
+      <a href="/signup" class="nav-btn">Sign up</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero hero-minimal" style="text-align:center;">
+  <div class="hero-eyebrow"><span class="hero-pulse"></span> Behavioral risk management for funded traders</div>
+  <h1>You already know<br>it's about <em class="hero-action">psychology.</em><br>Now do something<br>about it.</h1>
+
+  <div class="hero-signal" aria-label="PsyRule behavioral risk signal preview">
+    <div class="signal-card"><span>Trigger</span><strong>First loss</strong></div>
+    <div class="signal-core"><div class="signal-ring"></div><div class="signal-dot"></div><div class="signal-label">Pattern detected</div></div>
+    <div class="signal-card"><span>Rule</span><strong>Cooldown</strong></div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="/signup" class="btn-p">Claim founding price · $19/mo</a>
+    <a href="how-it-works.html" class="btn-g">See how it works</a>
+  </div>
+  <p class="hero-note">Detect the loop. Set the rule. Protect the account.</p>
+
+  <div class="hero-founding">
+    <span class="hf-dot"></span>
+    <span>Up to 100 founding spots</span>
+  </div>
+</div>
+
+<!-- THE MOMENT -->
+<div class="moment-wrap">
+  <div class="moment-frame">
+    <div class="moment-eyebrow">A real moment from a real session</div>
+    <h2 class="moment-title">11:02. Two stop-outs in. <em>Before the third trade.</em></h2>
+
+    <div class="moment-grid">
+      <div class="mn-l">
+        <span class="mn-tag">Trigger</span>
+        First stop-out at <strong>10:23</strong>.<br>
+        You re-entered in <strong>4 minutes</strong> instead of your usual 12.
+        <small>↳ same sequence as 6 prior sessions</small>
+        <div class="mn-divider"></div>
+        <span class="mn-tag amber">Behavior</span>
+        Position size <strong>+35%</strong> above plan.<br>
+        Mood logged: <em>impatient</em>.
+        <small>↳ classic revenge-loop signature</small>
+      </div>
+
+      <div class="iv-stage">
+        <div class="iv-connector l"></div>
+        <div class="iv-connector r"></div>
+        <div class="iv-card">
+          <div class="iv-meta">
+            <span class="iv-source">
+              <span class="iv-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M 12.33 5.5 A 5 5 0 1 0 12.33 10.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M 13.2 5 L 10.6 11" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+              <strong>PsyRule</strong>
+            </span>
+            <span>11:02 · now</span>
+          </div>
+          <div class="iv-headline">Pause. This is your <em>revenge loop.</em></div>
+          <div class="iv-body">You're <b>27 seconds</b> from placing a third trade after two stop-outs. Your re-entry time is a third of normal. Your size is up.</div>
+          <div class="iv-cost">
+            <div class="iv-cost-num">−$312</div>
+            <div class="iv-cost-cap">avg cost the last 6 times<br>this pattern fired</div>
+          </div>
+          <div class="iv-actions">
+            <button class="iv-btn" type="button">Override</button>
+            <button class="iv-btn primary" type="button">Hold 90 sec</button>
+          </div>
+          <div class="iv-foot">Rule #07 — your revenge loop</div>
+        </div>
+      </div>
+
+      <div class="mn-r">
+        <span class="mn-tag red">Cost if ignored</span>
+        Avg <strong>−$312</strong> when this loop runs to completion.<br>
+        Two more like it ends the challenge.
+        <small>↳ modeled from your own history</small>
+        <div class="mn-divider"></div>
+        <span class="mn-tag">PsyRule's job</span>
+        Surface the loop <em>before</em> the third trade.<br>
+        Not after.
+        <small>↳ 90-second forced pause, then your call</small>
+      </div>
+    </div>
+
+    <div class="moment-foot">The intervention · annotated · how PsyRule actually shows up</div>
+  </div>
+</div>
+
+<!-- DIFF BAND -->
+<div class="diff-band" style="margin-top:80px;">
+  <div class="diff-inner" style="text-align:center;max-width:780px;margin:0 auto;">
+    <div class="diff-label" style="display:flex;justify-content:center;">The behavioral layer</div>
+    <div class="diff-h" style="font-size:clamp(32px, 3.6vw, 52px);">Not a journal. Not a blocker.<br><em>A behavioral risk layer.</em></div>
+    <p class="diff-p" style="margin:0 auto;max-width:600px;">Journals show what happened after the damage is done. Rule blockers stop trades without teaching you the pattern. PsyRule shows the behavioral sequence behind your worst sessions — so you can fix the cause, not just restrict the action.</p>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="manifesto-mark">WHY THIS EXISTS</div>
+  <p class="manifesto-text">I failed prop firm challenges before I admitted it wasn't the strategy. It was me, at 11:02am, after a stop-out. PsyRule is the tool I wish had existed then.</p>
+  <div class="manifesto-attr">— The founder · currently profitable</div>
+</div>
+
+<!-- PATTERNS (compressed) -->
+<div class="patterns-section" id="patterns">
+  <div class="patterns-inner">
+    <div class="patterns-head" style="margin:0 auto 40px;text-align:center;">
+      <div class="section-tag" style="justify-content:center;"><span class="ch">01</span>Your pattern is specific</div>
+      <h2>Generic discipline advice<br>does not work because<br><em>your pattern is specific.</em></h2>
+      <p class="gap-sub" style="max-width:580px;margin-left:auto;margin-right:auto;">Here's the most common one — the loop that ends most prop-firm challenges.</p>
+    </div>
+
+    <div class="pattern-grid" style="grid-template-columns:1fr;max-width:720px;margin:0 auto;">
+      <div class="pattern-card">
+        <div class="pattern-card-num">01</div>
+        <div class="pattern-card-title">Revenge loop</div>
+        <div class="pattern-card-seq">
+          <span>First loss</span><span class="pcs-arrow">→</span>
+          <span>shorter wait</span><span class="pcs-arrow">→</span>
+          <span>larger size</span><span class="pcs-arrow">→</span>
+          <span class="pcs-end">second loss</span>
+        </div>
+        <div class="pattern-card-line"></div>
+        <p class="pattern-card-body">A losing trade compresses your re-entry time and inflates your sizing. The second trade is rarely the recovery you imagined.</p>
+        <div class="pattern-card-cost"><span class="pcc-label">Modeled cost</span><span class="pcc-amt">~$312</span><span class="pcc-unit">avg per detected event</span></div>
+      </div>
+    </div>
+
+    <div class="pattern-also">
+      <a href="how-it-works.html#patterns" class="pa-row"><span class="pa-num">02</span><span class="pa-name">Green-day giveback</span><span class="pa-cost">~$184 avg per green day</span></a>
+      <a href="how-it-works.html#patterns" class="pa-row"><span class="pa-num">03</span><span class="pa-name">Late-session decay</span><span class="pa-cost">~$96 avg per late trade</span></a>
+      <a href="how-it-works.html#patterns" class="pa-row"><span class="pa-num">04</span><span class="pa-name">Challenge pressure</span><span class="pa-cost">~$2,000 / blown challenge</span></a>
+    </div>
+
+    <div style="text-align:center;margin-top:36px;">
+      <a href="how-it-works.html#patterns" class="pattern-more-link">See all four patterns in detail →</a>
+    </div>
+  </div>
+</div>
+
+<!-- GAP (compressed, 4 rows) -->
+<div class="gap-section" id="gap">
+  <div class="gap-inner">
+    <div class="section-tag"><span class="ch">02</span>Competitive gap</div>
+    <h2>Every other tool logs<br>what happened.<br><em>PsyRule explains why.</em></h2>
+    <p class="gap-sub">Four of the most distinctive differences. <a href="compare.html" style="color:var(--green);font-weight:500;">See the full 11-row comparison →</a></p>
+    <div class="gap-table-wrap">
+      <table class="gap-table">
+        <thead>
+          <tr>
+            <th class="feature-col">Capability</th>
+            <th><a class="gap-competitor-link" href="https://app.tradeguard.co/" target="_blank" rel="noopener noreferrer">TradeGuard</a></th>
+            <th>Edgewonk</th>
+            <th>Tradezella</th>
+            <th>Tradis</th>
+            <th class="our our-head">PsyRule <span class="our-badge">you</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="feature-col">Pre-session behavioral check-in</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">checklist only</td><td class="our-col yes">✓</td></tr>
+          <tr><td class="feature-col">Personal danger-zone alerts</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="partial">lot calc only</td><td class="our-col yes">✓</td></tr>
+          <tr><td class="feature-col">Mental state → outcome correlation</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td class="our-col yes">✓</td></tr>
+          <tr><td class="feature-col">Behavioral pattern detection (trader-specific)</td><td class="no">✕</td><td class="no">✕</td><td class="partial">basic stats</td><td class="partial">generic coaching</td><td class="our-col yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align:center;margin-top:32px;"><a href="compare.html" class="btn-g">See the full comparison →</a></div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-section" id="pricing">
+  <div class="pricing-head">
+    <div class="section-tag" style="justify-content:center;"><span class="ch">03</span>Pricing</div>
+    <h2>One plan. <em>Founding price.</em></h2>
+    <p>Locked for life for the first 100 customers.</p>
+  </div>
+  <div class="p-grid">
+    <div class="p-card">
+      <div class="p-tier">Standard</div>
+      <div class="p-price">$39<span>/mo</span></div>
+      <div class="p-desc">After founding closes.</div>
+      <ul class="p-feats">
+        <li><span class="pck">✓</span>All four pattern detectors</li>
+        <li><span class="pck">✓</span>Live interventions</li>
+        <li><span class="pck">✓</span>Weekly behavioral report</li>
+        <li><span class="pck">✓</span>MT4/MT5/cTrader/NinjaTrader sync</li>
+      </ul>
+      <a href="/signup?plan=standard" class="p-btn">Get notified at launch</a>
+    </div>
+    <div class="p-card feat">
+      <div class="p-tier" style="color:var(--green);">Founding · 100 spots</div>
+      <div class="p-price">$19<span>/mo</span></div>
+      <div class="p-desc">Locked for life. 30-day refund.</div>
+      <ul class="p-feats">
+        <li><span class="pck">✓</span>Everything in Standard</li>
+        <li><span class="pck">✓</span>Locked $19/mo forever</li>
+        <li><span class="pck">✓</span>Direct line to the founder</li>
+        <li><span class="pck">✓</span>Vote on the next pattern detector</li>
+      </ul>
+      <a href="/signup" class="p-btn feat">Claim a founding spot</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="foot-manifesto">
+  <p>You already know it's behavioral. <strong>Now do something about it.</strong></p>
+  <div class="foot-sig">PsyRule · built by a trader who failed first</div>
+</div>
+<footer>
+  <div class="foot-logo">
+    <div class="foot-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M 12.33 5.5 A 5 5 0 1 0 12.33 10.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M 13.2 5 L 10.6 11" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+    PsyRule
+  </div>
+  <div class="foot-links">
+    <a href="how-it-works.html" class="foot-link">How it works</a>
+    <a href="compare.html" class="foot-link">Compare</a>
+    <a href="faq.html" class="foot-link">FAQ</a>
+    <a href="mailto:hi@psyrule.com" class="foot-link">Contact</a>
+  </div>
+  <div class="foot-note">© 2026 PsyRule</div>
+</footer>
+
+</body>
+</html>

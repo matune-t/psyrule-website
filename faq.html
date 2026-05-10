@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PsyRule — FAQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,500..800,50;1,9..144,500..800,50&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="psyrule.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-shell">
+    <a href="index.html" class="logo" aria-label="PsyRule home">
+      <div class="logo-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M 12.33 5.5 A 5 5 0 1 0 12.33 10.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M 13.2 5 L 10.6 11" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+      <span>Psy<em style="font-style:italic;color:#1a5c3e;font-family:'Fraunces',serif;font-weight:800">Rule</em></span>
+    </a>
+    <div class="nav-r">
+      <a href="how-it-works.html" class="nav-link">How it works</a>
+      <a href="compare.html" class="nav-link">Compare</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+      <a href="faq.html" class="nav-link active">FAQ</a>
+      <a href="/login" class="nav-link">Log in</a>
+      <a href="/signup" class="nav-btn">Sign up</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-eyebrow"><span class="hero-pulse"></span> Frequently asked questions</div>
+  <h1>The questions traders<br><em>actually ask us.</em></h1>
+  <p class="hero-note" style="font-size:15px;max-width:580px;margin:24px auto 0;line-height:1.6;">Anything missing? <a href="mailto:hi@psyrule.com" style="color:#1a5c3e;">Email us</a> and we'll add it.</p>
+</div>
+
+<section class="faq-section">
+  <details class="faq-item" open>
+    <summary>How is this different from a trading journal?</summary>
+    <div class="faq-body">
+      <p>A journal logs what happened after the session ends. By the time you review on Sunday, the loop has already run.</p>
+      <p>PsyRule names the behavioral sequence behind your worst sessions — your trigger, your usual wait time, your typical sizing escalation — and surfaces it the next time it starts to run, before the trade.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Which prop firms does PsyRule work with?</summary>
+    <div class="faq-body">
+      <p>PsyRule reads from your trading platform (MetaTrader 4, MetaTrader 5, cTrader, NinjaTrader). That means it works with FTMO, The Funded Trader, Topstep, Apex, MyForexFunds successor firms, and most challenge providers that use those platforms.</p>
+      <p>If your firm uses a proprietary platform, we'll likely need to add support specifically — email us with the firm name.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Will PsyRule block me from placing trades?</summary>
+    <div class="faq-body">
+      <p>No. PsyRule shows the rule and the cost; the decision is yours. The default intervention is a 90-second hold with a clear "Override" option.</p>
+      <p>We don't believe in hard blockers — comply once and you learn nothing. We want you to <em>see</em> the loop, then choose.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>How does it personalize the rules to me?</summary>
+    <div class="faq-body">
+      <p>Every rule is built from your own session history. We measure your normal re-entry time, your normal sizing, your normal post-loss behavior — and then we name your specific patterns. The "revenge loop" you see isn't generic advice; it's your trigger, your sequence, your historical cost.</p>
+      <p>The first 2–3 weeks PsyRule is mostly listening. Rules sharpen as your data builds.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>What data do you collect, and where is it stored?</summary>
+    <div class="faq-body">
+      <p>We read trade history (timestamp, symbol, size, direction, P&amp;L) and your pre-session check-in answers (mood, sleep, focus, plan). We don't store your platform credentials — sync uses read-only API tokens you generate in your platform.</p>
+      <p>Data is encrypted at rest and stored on EU servers. You can export everything as JSON or delete your account at any time from settings.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Can I use it during a funded challenge?</summary>
+    <div class="faq-body">
+      <p>Yes — and that's when it matters most. Challenge phase is where the patterns we describe (revenge loop, green-day giveback, challenge pressure) cost the most: an avg ~$2,000 fee per blown challenge.</p>
+      <p>PsyRule doesn't violate prop-firm rules. It's a read-only observer plus a notification layer on your end.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>What if PsyRule misidentifies a pattern?</summary>
+    <div class="faq-body">
+      <p>You can mark any intervention as "false positive" with one tap. The model adjusts. We expect the first month to have some over-firing — that's the cost of personalization. After ~30 sessions, false-positive rate typically drops below 10%.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Refund policy?</summary>
+    <div class="faq-body">
+      <p>30-day no-questions refund on the founding plan. If PsyRule hasn't surfaced at least one pattern that you'd describe as "yours" in 30 days, email us and we'll refund.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Why $19/mo, and will the price go up?</summary>
+    <div class="faq-body">
+      <p>$19/mo is the founding price for the first 100 customers, locked for life. After founding closes, the standard plan will be $39/mo. Founding customers stay at $19/mo as long as their subscription is active.</p>
+      <p>The price reflects the cost of building personalized behavioral models per user — this is not a generic dashboard.</p>
+    </div>
+  </details>
+
+  <details class="faq-item">
+    <summary>Who built this and why?</summary>
+    <div class="faq-body">
+      <p>PsyRule was built by a former failed prop-firm trader (now profitable) who'd lost three challenges in a row to the same revenge loop and realized no tool would have caught it. The founder works on PsyRule full-time and is reachable at <a href="mailto:hi@psyrule.com">hi@psyrule.com</a>.</p>
+    </div>
+  </details>
+</section>
+
+<div class="page-cta">
+  <h2>Ready to see <em>your</em> patterns?</h2>
+  <a href="/signup" class="btn-p">Claim founding price · $19/mo</a>
+</div>
+
+<footer>
+  <div class="foot-logo">
+    <div class="foot-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M 12.33 5.5 A 5 5 0 1 0 12.33 10.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M 13.2 5 L 10.6 11" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+    PsyRule
+  </div>
+  <div class="foot-links">
+    <a href="index.html" class="foot-link">Home</a>
+    <a href="how-it-works.html" class="foot-link">How it works</a>
+    <a href="compare.html" class="foot-link">Compare</a>
+    <a href="mailto:hi@psyrule.com" class="foot-link">Contact</a>
+  </div>
+  <div class="foot-note">© 2026 PsyRule</div>
+</footer>
+
+</body>
+</html>
