@@ -406,6 +406,7 @@ footer { padding: 32px 56px; border-top: 1px solid var(--border); display: flex;
   .nav-r .nav-link { display: block; padding: 12px 14px; font-size: 15px; border-radius: 10px; }
   nav.nav-open .nav-r { opacity: 1; transform: translateY(0); pointer-events: auto; }
   .hero { padding: 110px 20px 44px; }
+  h1 { line-height: 1.02; }
 
   /* Hero signal — shrink the 154px core + cards so the row fits without
      the glow ring spilling vertically past the card baseline, which is
