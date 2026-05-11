@@ -207,7 +207,11 @@ h2 em { font-style: italic; color: var(--green); }
 .foot-manifesto p { max-width: 620px; margin: 0 auto; font-family: 'Fraunces', serif; font-style: italic; font-size: 17px; color: var(--ink2); line-height: 1.6; }
 .foot-manifesto p strong { font-style: normal; font-family: 'Manrope', sans-serif; font-weight: 500; color: var(--ink); }
 .foot-sig { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink3); letter-spacing: .08em; margin-top: 16px; text-transform: uppercase; }
-footer { padding: 32px 56px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: var(--white); }
+footer { padding: 32px 56px; border-top: 1px solid var(--border); display: flex; flex-direction: column; align-items: stretch; gap: 22px; background: var(--white); }
+.foot-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.foot-disclaimer { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink3); line-height: 1.7; letter-spacing: .01em; padding-top: 18px; border-top: 1px solid var(--border); max-width: 920px; }
+.foot-disclaimer strong { color: var(--ink2); font-weight: 600; }
+.foot-disclaimer a { color: var(--ink2); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
 .foot-logo { display: flex; align-items: center; gap: 8px; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 15px; color: var(--ink2); }
 .foot-mark { width: 22px; height: 22px; background: var(--green); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
 .foot-mark svg { width: 14px; height: 14px; }
@@ -424,7 +428,9 @@ footer { padding: 32px 56px; border-top: 1px solid var(--border); display: flex;
   .diff-band { padding: 72px 20px; }
   .pricing-section { padding: 72px 20px; }
   .p-grid { grid-template-columns: 1fr; }
-  footer { padding: 24px 20px; flex-direction: column; gap: 16px; text-align: center; }
+  footer { padding: 24px 20px; gap: 18px; text-align: center; }
+  .foot-row { flex-direction: column; gap: 16px; }
+  .foot-disclaimer { text-align: left; padding-top: 16px; }
   .foot-links { flex-wrap: wrap; justify-content: center; }
   .moment-wrap { padding: 0 20px; }
   .moment-frame { padding: 44px 24px 52px; }
