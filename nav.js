@@ -36,7 +36,7 @@
       a.setAttribute('href', url.toString())
     } catch (err) {}
   }, true)
-})()
+})();
 
 // Mobile nav drawer toggle. Loaded by every page; bails quietly if the
 // nav markup isn't on the page.
@@ -80,4 +80,4 @@
   window.addEventListener('resize', function () {
     if (window.innerWidth > 960) close()
   })
-})()
+})();
