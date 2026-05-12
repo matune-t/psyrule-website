@@ -1,3 +1,43 @@
+// Attribution forwarding. Captures utm_*/ref from the landing URL into
+// sessionStorage and stamps any outbound app.psyrule.app link on click so
+// the signup form can persist the source.
+(function () {
+  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'ref']
+  var STORAGE_KEY = 'psyrule_attribution'
+
+  try {
+    var params = new URLSearchParams(window.location.search)
+    var fresh = {}
+    KEYS.forEach(function (k) { if (params.has(k)) fresh[k] = params.get(k) })
+    if (Object.keys(fresh).length) {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(fresh))
+    }
+  } catch (e) {}
+
+  function getAttribution() {
+    try {
+      var raw = sessionStorage.getItem(STORAGE_KEY)
+      return raw ? JSON.parse(raw) : null
+    } catch (e) { return null }
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a[href]')
+    if (!a) return
+    var href = a.getAttribute('href')
+    if (!href || href.indexOf('app.psyrule.app') === -1) return
+    var attribution = getAttribution()
+    if (!attribution) return
+    try {
+      var url = new URL(href)
+      Object.keys(attribution).forEach(function (k) {
+        if (!url.searchParams.has(k)) url.searchParams.set(k, attribution[k])
+      })
+      a.setAttribute('href', url.toString())
+    } catch (err) {}
+  }, true)
+})()
+
 // Mobile nav drawer toggle. Loaded by every page; bails quietly if the
 // nav markup isn't on the page.
 (function () {
