@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bg1" cx="22%" cy="18%" r="44%">
+      <stop offset="0%" stop-color="#1a5c3e" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#1a5c3e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bg2" cx="82%" cy="92%" r="46%">
+      <stop offset="0%" stop-color="#7c4a00" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#7c4a00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#206e4a"/>
+      <stop offset="100%" stop-color="#0f402b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#f5f3ee"/>
+  <rect width="1200" height="630" fill="url(#bg1)"/>
+  <rect width="1200" height="630" fill="url(#bg2)"/>
+
+  <g transform="translate(80,80)">
+    <rect width="56" height="56" rx="16" fill="url(#mark)"/>
+    <g transform="translate(28,28)" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" fill="none">
+      <path d="M 7.6 -5.6 A 9 9 0 1 0 7.6 5.6"/>
+      <path d="M 9.2 -7 L 3 7"/>
+    </g>
+    <text x="76" y="38" font-family="'Manrope', system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" fill="#0e0d0b" letter-spacing="-0.5">Psy<tspan font-family="'Fraunces', Georgia, serif" font-style="italic" font-weight="800" fill="#1a5c3e">Rule</tspan></text>
+  </g>
+
+  <g transform="translate(80,400)">
+    <rect x="-2" y="-26" width="280" height="32" rx="16" fill="#ffffff" fill-opacity="0.7" stroke="#d8d4cc"/>
+    <circle cx="14" cy="-10" r="5" fill="#1a5c3e"/>
+    <text x="26" y="-6" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="13" fill="#1a5c3e" letter-spacing="1.4">BEHAVIORAL RISK LAYER</text>
+  </g>
+
+  <text x="80" y="280" font-family="'Fraunces', Georgia, serif" font-weight="800" font-size="74" fill="#0e0d0b" letter-spacing="-1.5">Stop the revenge trade</text>
+  <text x="80" y="358" font-family="'Fraunces', Georgia, serif" font-weight="800" font-size="74" fill="#0e0d0b" letter-spacing="-1.5">before it ends the <tspan font-style="italic" fill="#1a5c3e">challenge.</tspan></text>
+
+  <text x="80" y="520" font-family="'Manrope', system-ui, sans-serif" font-size="22" font-weight="400" fill="#5c5a54">For prop firm and funded traders. Detect the loop.</text>
+  <text x="80" y="552" font-family="'Manrope', system-ui, sans-serif" font-size="22" font-weight="400" fill="#5c5a54">Set the rule. Protect the account.</text>
+
+  <text x="1120" y="592" text-anchor="end" font-family="ui-monospace, 'JetBrains Mono', monospace" font-size="14" fill="#9e9b94" letter-spacing="1.5">PSYRULE.APP</text>
+</svg>
