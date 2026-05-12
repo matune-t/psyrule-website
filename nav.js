@@ -1,14 +1,24 @@
-// Attribution forwarding. Captures utm_*/ref from the landing URL into
-// sessionStorage and stamps any outbound app.psyrule.app link on click so
-// the signup form can persist the source.
+// Attribution forwarding. Captures utm_*/ref/referrer/landing_path on
+// first visit into sessionStorage and stamps any outbound app.psyrule.app
+// link on click so the signup form can persist the source across the
+// origin boundary (sessionStorage is per-origin, the URL is the bridge).
 (function () {
-  var KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'ref']
+  var URL_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'ref']
   var STORAGE_KEY = 'psyrule_attribution'
 
   try {
     var params = new URLSearchParams(window.location.search)
-    var fresh = {}
-    KEYS.forEach(function (k) { if (params.has(k)) fresh[k] = params.get(k) })
+    var existingRaw = sessionStorage.getItem(STORAGE_KEY)
+    var existing = existingRaw ? JSON.parse(existingRaw) : null
+    var fresh = existing || {}
+    URL_KEYS.forEach(function (k) { if (params.has(k)) fresh[k] = params.get(k) })
+    // referrer + landing_path are captured once, on first marketing-site
+    // visit of the session. Subsequent internal navigations don't
+    // overwrite them — that would clobber the original entry point.
+    if (!existing) {
+      if (document.referrer) fresh.referrer = document.referrer
+      fresh.landing_path = window.location.pathname
+    }
     if (Object.keys(fresh).length) {
       sessionStorage.setItem(STORAGE_KEY, JSON.stringify(fresh))
     }
