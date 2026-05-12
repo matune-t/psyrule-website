@@ -3,12 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PsyRule — How it works</title>
+<title>PsyRule: How it works. Behavioral risk for funded traders</title>
+<meta name="description" content="How PsyRule reads your trade sync and pre-session check-in, names the loops in your history, and surfaces them before the next instance. Five steps from check-in to live intervention.">
+<link rel="canonical" href="https://psyrule.app/how-it-works.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="PsyRule: How it works">
+<meta property="og:description" content="From pre-session check-in to live intervention. The behavioral risk layer for prop firm and funded traders.">
+<meta property="og:url" content="https://psyrule.app/how-it-works.html">
+<meta property="og:image" content="https://psyrule.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PsyRule: How it works">
+<meta name="twitter:description" content="From pre-session check-in to live intervention. The behavioral risk layer for prop firm and funded traders.">
+<meta name="twitter:image" content="https://psyrule.app/og.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,500..800,50;1,9..144,500..800,50&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="psyrule.css">
 <script src="nav.js" defer></script>
+
+<!-- ============================================================
+     TRACKING PIXELS — fill in IDs, then uncomment each block.
+     ============================================================ -->
+<!-- Google tag (gtag.js)
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXX');</script>
+-->
+<!-- Meta Pixel
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','YOUR_PIXEL_ID');fbq('track','PageView');</script>
+-->
+<!-- Reddit Pixel
+<script>!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','YOUR_RDT_ID');rdt('track','PageVisit');</script>
+-->
+<!-- X (Twitter) Pixel
+<script>!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');twq('config','YOUR_X_PIXEL_ID');</script>
+-->
 </head>
 <body>
 
@@ -26,7 +56,7 @@
         <a href="faq.html" class="nav-link">FAQ</a>
         <a href="https://app.psyrule.app/login" class="nav-link">Log in</a>
       </div>
-      <a href="https://app.psyrule.app/signup" class="nav-btn">Sign up</a>
+      <a href="https://app.psyrule.app/signup" class="nav-btn">Join waitlist</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
         <span class="nav-toggle-bars" aria-hidden="true"></span>
       </button>
@@ -60,7 +90,7 @@
       <div class="how-step-card">
         <div class="how-step-tag">Trade with rules visible</div>
         <h3 class="how-step-title">Your limits stay <em>in view</em> as pressure builds.</h3>
-        <p class="how-step-body">Personal limits, challenge rules, and risk thresholds are anchored on screen. Once the session starts, they lock in — bypass requires a 60-second cooldown and a logged reason.</p>
+        <p class="how-step-body">Personal limits, challenge rules, and risk thresholds are anchored on screen. Once the session starts, they lock in. Bypass requires a short cooldown (60-90 seconds, set by your profile) and a logged reason.</p>
       </div>
     </div>
     <div class="how-step">
@@ -158,7 +188,7 @@
         <div class="chart-card">
           <div class="chart-meta">
             <strong>Session #142 · equity curve</strong>
-            <span>10:00 → 16:00</span>
+            <span>9:00 → 15:00</span>
           </div>
           <svg class="chart-svg" viewBox="0 0 600 220" preserveAspectRatio="none" aria-label="Equity curve with intervention point">
             <line x1="0" y1="55"  x2="600" y2="55"  stroke="#d8d4cc" stroke-dasharray="2 4"/>
@@ -170,13 +200,13 @@
             <line x1="210" y1="20" x2="210" y2="200" stroke="#1a5c3e" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
             <circle cx="210" cy="145" r="6" fill="#faf9f6" stroke="#1a5c3e" stroke-width="2"/>
             <circle cx="210" cy="145" r="2.5" fill="#1a5c3e"/>
-            <text x="218" y="32" font-family="JetBrains Mono" font-size="9" fill="#1a5c3e" letter-spacing=".06em">PSYRULE FIRED · 11:02</text>
+            <text x="218" y="32" font-family="JetBrains Mono" font-size="9" fill="#1a5c3e" letter-spacing=".06em">PSYRULE FIRED · 9:50</text>
             <circle cx="70" cy="95" r="3" fill="#1a5c3e"/>
             <circle cx="140" cy="130" r="3" fill="#8b1a1a"/>
             <circle cx="180" cy="142" r="3" fill="#8b1a1a"/>
           </svg>
           <div class="chart-axis">
-            <span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span><span>16:00</span>
+            <span>9:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span>
           </div>
           <div class="chart-legend">
             <span><span class="lg-line"></span>Actual session</span>
@@ -186,17 +216,17 @@
 
         <div class="notes-stack">
           <div class="curve-mn">
-            <div class="t">10:14 → 10:27</div>
-            <div class="h">Two stop-outs in <em>13 minutes.</em></div>
-            <p>Re-entry compressed from 12 min to 4. Size up 35%. The same sequence ran in 6 prior sessions — every time the third trade lost.</p>
+            <div class="t">9:35 → 9:46</div>
+            <div class="h">Two stop-outs in <em>11 minutes.</em></div>
+            <p>Re-entry compressed from 12 min to 4. Size up 35%. The same sequence ran in 6 prior sessions, and every time the third trade lost.</p>
           </div>
           <div class="curve-mn amber">
-            <div class="t">11:02 — moment of decision</div>
+            <div class="t">9:50, moment of decision</div>
             <div class="h">PsyRule named the loop <em>before</em> the third trade.</div>
-            <p>Not "you're tilted" — specifically: <em>this is your revenge loop, it has cost you $312 on average, hold 90 seconds.</em> The trader paused.</p>
+            <p>Not "you're tilted." Specifically: <em>this is your revenge loop, it has cost you $312 on average, hold 90 seconds.</em> The trader paused.</p>
           </div>
           <div class="curve-mn">
-            <div class="t">14:02 → 16:00</div>
+            <div class="t">13:02 → 15:00</div>
             <div class="h">Session closed <em>green.</em></div>
             <p>The dashed line is what the trader's history said would have happened. The solid line is what did.</p>
           </div>

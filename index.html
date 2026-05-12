@@ -3,18 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PsyRule — For traders who know it's behavioral</title>
+<title>PsyRule: Stop the revenge trade before it ends the challenge</title>
+<meta name="description" content="PsyRule is a behavioral risk layer for prop firm and funded traders. We surface your specific revenge loop, green-day giveback, and late-session decay patterns before the next trade, not after the damage.">
+<link rel="canonical" href="https://psyrule.app/">
+
+<!-- Favicons / app icons -->
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="PsyRule" />
-    <link rel="manifest" href="/site.webmanifest" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="PsyRule" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="PsyRule: Stop the revenge trade before it ends the challenge">
+<meta property="og:description" content="A behavioral risk layer for prop firm and funded traders. Catches your revenge loop before you place the trade.">
+<meta property="og:url" content="https://psyrule.app/">
+<meta property="og:image" content="https://psyrule.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PsyRule: Stop the revenge trade before it ends the challenge">
+<meta name="twitter:description" content="A behavioral risk layer for prop firm and funded traders. Catches your revenge loop before you place the trade.">
+<meta name="twitter:image" content="https://psyrule.app/og.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,500..800,50;1,9..144,500..800,50&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="psyrule.css">
 <script src="nav.js" defer></script>
+
+<!-- ============================================================
+     TRACKING PIXELS — fill in IDs, then uncomment each block.
+     Required for paid ads (Reddit, X, Meta retargeting, Google).
+     Without these, no paid channel attributes a conversion.
+     ============================================================ -->
+
+<!-- Google tag (gtag.js) — replace G-XXXXXXX with your GA4 ID
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXX');
+</script>
+-->
+
+<!-- Meta Pixel — replace YOUR_PIXEL_ID
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'YOUR_PIXEL_ID');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+-->
+
+<!-- Reddit Pixel — replace YOUR_RDT_ID
+<script>
+  !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);
+  rdt('init','YOUR_RDT_ID');
+  rdt('track', 'PageVisit');
+</script>
+-->
+
+<!-- X (Twitter) Pixel — replace YOUR_X_PIXEL_ID
+<script>
+!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+twq('config','YOUR_X_PIXEL_ID');
+</script>
+-->
+
 </head>
 <body>
 
@@ -29,11 +92,11 @@
       <div class="nav-r" id="navMenu">
         <a href="how-it-works.html" class="nav-link">How it works</a>
         <a href="compare.html" class="nav-link">Compare</a>
-        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#pricing" class="nav-link active">Pricing</a>
         <a href="faq.html" class="nav-link">FAQ</a>
         <a href="https://app.psyrule.app/login" class="nav-link">Log in</a>
       </div>
-      <a href="https://app.psyrule.app/signup" class="nav-btn">Sign up</a>
+      <a href="https://app.psyrule.app/signup" class="nav-btn">Join waitlist</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
         <span class="nav-toggle-bars" aria-hidden="true"></span>
       </button>
@@ -43,7 +106,7 @@
 
 <!-- HERO -->
 <div class="hero hero-minimal" style="text-align:center;">
-  <div class="hero-eyebrow"><span class="hero-pulse"></span> We catch the revenge trade before you place it.</div>
+  <div class="hero-eyebrow"><span class="hero-pulse"></span> Behavioral risk for prop firm &amp; funded traders</div>
   <h1>You already know<br>it's about <em class="hero-action">psychology.</em><br>Now do something<br>about it.</h1>
   <p class="hero-note" style="font-size:11px;margin-top:-10px;margin-bottom:20px;">Three blown challenges before I stopped blaming the strategy.</p>
 
@@ -54,7 +117,7 @@
   </div>
 
   <div class="hero-cta">
-    <a href="https://app.psyrule.app/signup" class="btn-p">Claim a founding spot</a>
+    <a href="https://app.psyrule.app/signup" class="btn-p">Join the waitlist</a>
     <a href="how-it-works.html" class="btn-g">See how it works</a>
   </div>
   <p class="hero-note">Detect the loop. Set the rule. Protect the account.</p>
@@ -69,12 +132,12 @@
 <div class="moment-wrap">
   <div class="moment-frame">
     <div class="moment-eyebrow">A real moment from a real session</div>
-    <h2 class="moment-title">11:02. Two stop-outs in. <em>Before the third trade.</em></h2>
+    <h2 class="moment-title">9:50. Two stop-outs in. <em>Before the third trade.</em></h2>
 
     <div class="moment-grid">
       <div class="mn-l">
         <span class="mn-tag">Trigger</span>
-        First stop-out at <strong>10:23</strong>.<br>
+        First stop-out at <strong>9:35</strong>.<br>
         You re-entered in <strong>4 minutes</strong> instead of your usual 12.
         <small>↳ same sequence as 6 prior sessions</small>
         <div class="mn-divider"></div>
@@ -93,7 +156,7 @@
               <span class="iv-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M 12.33 5.5 A 5 5 0 1 0 12.33 10.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M 13.2 5 L 10.6 11" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></span>
               <strong>PsyRule</strong>
             </span>
-            <span>11:02 · now</span>
+            <span>9:50 · now</span>
           </div>
           <div class="iv-headline">Pause. This is your <em>revenge loop.</em></div>
           <div class="iv-body">You're <b>27 seconds</b> from placing a third trade after two stop-outs. Your re-entry time is a third of normal. Your size is up.</div>
@@ -118,7 +181,7 @@
         <span class="mn-tag">PsyRule's job</span>
         Surface the loop <em>before</em> the third trade.<br>
         Not after.
-        <small>↳ 90-second forced pause, then your call</small>
+        <small>↳ a 60-90 sec pause based on your profile, then your call</small>
       </div>
     </div>
 
@@ -296,7 +359,7 @@
         <li><span class="pck">✓</span>Weekly behavioral report</li>
         <li><span class="pck">✓</span>MT4/MT5/cTrader/NinjaTrader sync</li>
       </ul>
-      <a href="https://app.psyrule.app/signup?plan=standard" class="p-btn">Get notified at launch</a>
+      <a href="https://app.psyrule.app/signup?plan=standard" class="p-btn">Join the waitlist</a>
     </div>
     <div class="p-card feat">
       <div class="p-tier" style="color:var(--green);">Founding · 100 spots <span class="our-badge">Most popular</span></div>
@@ -308,7 +371,7 @@
         <li><span class="pck">✓</span>Direct line to the founder</li>
         <li><span class="pck">✓</span>Vote on the next pattern detector</li>
       </ul>
-      <a href="https://app.psyrule.app/signup" class="p-btn feat">Claim a founding spot</a>
+      <a href="https://app.psyrule.app/signup?plan=founding" class="p-btn feat">Reserve a founding spot</a>
     </div>
   </div>
 </div>
@@ -316,7 +379,7 @@
 <!-- FOOTER -->
 <div class="foot-manifesto">
   <p>You already know it's behavioral. <strong>Now do something about it.</strong></p>
-  <div style="margin-top:24px;"><a href="https://app.psyrule.app/signup" class="btn-p">Claim a founding spot</a></div>
+  <div style="margin-top:24px;"><a href="https://app.psyrule.app/signup" class="btn-p">Join the waitlist</a></div>
   <div class="foot-sig">PsyRule · built by a trader who failed first</div>
 </div>
 <footer>
