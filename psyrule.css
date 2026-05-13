@@ -201,6 +201,13 @@ h2 em { font-style: italic; color: var(--green); }
 .p-btn:hover { color: var(--ink); border-color: var(--ink); }
 .p-btn.feat { background: var(--green); color: #fff; border-color: var(--green); }
 .p-btn.feat:hover { background: var(--green2); border-color: var(--green2); }
+.p-addon { max-width: 760px; margin: 18px auto 0; background: var(--cream2); border: 1px solid var(--border); border-radius: 12px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.p-addon-meta { flex: 1 1 320px; min-width: 0; }
+.p-addon-name { font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 500; color: var(--ink); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.p-addon-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); background: var(--white); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; }
+.p-addon-desc { font-size: 13px; color: var(--ink2); margin-top: 6px; line-height: 1.55; }
+.p-addon-price { font-family: 'Fraunces', serif; font-weight: 700; font-size: 26px; color: var(--ink); white-space: nowrap; }
+.p-addon-price span { font-size: 12px; color: var(--ink2); font-family: 'Manrope', sans-serif; font-weight: 300; margin-left: 4px; letter-spacing: 0; }
 
 /* FOOTER */
 .foot-manifesto { background: var(--white); border-top: 1px solid var(--border); padding: 48px 56px; text-align: center; }
@@ -429,6 +436,7 @@ footer { padding: 32px 56px; border-top: 1px solid var(--border); display: flex;
   .diff-band { padding: 72px 20px; }
   .pricing-section { padding: 72px 20px; }
   .p-grid { grid-template-columns: 1fr; }
+  .p-addon { padding: 16px 18px; }
   footer { padding: 24px 20px; gap: 18px; text-align: center; }
   .foot-row { flex-direction: column; gap: 16px; }
   .foot-disclaimer { text-align: left; padding-top: 16px; }
