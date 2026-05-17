@@ -194,52 +194,103 @@
 
   <div class="curve-wrap">
     <div class="curve-frame">
-      <div class="curve-grid">
-        <div class="chart-card">
-          <div class="chart-meta">
-            <strong>Session #142 · equity curve</strong>
-            <span>9:00 → 15:00</span>
+      <!-- Interactive scrubber. Same component used on the home page. -->
+      <div class="scene" data-scene>
+        <div class="scene-stage">
+          <div class="scene-chart" data-scene-chart>
+            <div class="scene-meta">
+              <span class="scene-clock" data-scene-clock>09:50</span>
+              <span class="scene-meta-r">Session #142 · EUR-USD · funded</span>
+            </div>
+
+            <svg class="scene-svg" viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="0" y1="40" x2="600" y2="40" stroke="#d8d4cc" stroke-width="1" opacity=".5"/>
+              <text x="6" y="34" font-family="JetBrains Mono, monospace" font-size="9" fill="#9e9b94" letter-spacing="0.04em">+0</text>
+              <text x="6" y="200" font-family="JetBrains Mono, monospace" font-size="9" fill="#9e9b94" letter-spacing="0.04em">−$1.2k</text>
+
+              <rect x="0" y="180" width="600" height="32" fill="#a3372e" opacity="0.06"/>
+              <text x="594" y="174" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9" fill="#a3372e" letter-spacing="0.06em">DAILY LOSS LIMIT</text>
+
+              <g class="scene-ghost-g" clip-path="url(#sceneGhostClipHIW)">
+                <path class="scene-ghost"
+                      d="M 133 80 L 175 110 L 230 140 L 310 170 L 430 195 L 600 205"
+                      fill="none" stroke="#a3372e" stroke-width="2" stroke-dasharray="5 4"
+                      stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
+              </g>
+              <defs>
+                <!-- Default width=467 so no-JS users see the full ghost line.
+                     JS clips it back to 0 on .is-live. -->
+                <clipPath id="sceneGhostClipHIW">
+                  <rect class="scene-ghost-clip" x="133" y="0" width="467" height="220"/>
+                </clipPath>
+              </defs>
+
+              <path class="scene-real"
+                    d="M 0 50 L 33 78 L 53 80 L 100 79 L 133 80 L 240 78 L 380 77 L 600 76"
+                    fill="none" stroke="#1a5c3e" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+
+              <g class="scene-stops">
+                <circle cx="33" cy="78" r="3.5" fill="#a3372e"/>
+                <circle cx="53" cy="80" r="3.5" fill="#a3372e"/>
+                <text x="33" y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#a3372e">SO1</text>
+                <text x="53" y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#a3372e">SO2</text>
+              </g>
+
+              <g class="scene-marker" transform="translate(133 80)">
+                <circle class="scene-marker-ring" r="4" fill="none" stroke="#1a5c3e" stroke-width="1.25"/>
+                <circle r="4.5" fill="#1a5c3e"/>
+                <line x1="0" y1="-4" x2="0" y2="-20" stroke="#1a5c3e" stroke-width="1" opacity="0.6"/>
+                <text x="0" y="-26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1a5c3e" letter-spacing="0.06em">PAUSE 9:50</text>
+              </g>
+
+              <line class="scene-playhead" x1="0" y1="20" x2="0" y2="212" stroke="#0e0d0b" stroke-width="1" opacity="0.18" stroke-dasharray="2 3"/>
+            </svg>
+
+            <div class="scene-axis">
+              <span>9:30</span><span>9:50</span><span>10:30</span><span>11:00</span>
+            </div>
+            <div class="scene-legend">
+              <span><i class="scene-lg green"></i>Your actual P&amp;L · with the pause</span>
+              <span><i class="scene-lg red"></i>Modeled · if the loop had run</span>
+            </div>
           </div>
-          <svg class="chart-svg" viewBox="0 0 600 220" preserveAspectRatio="none" aria-label="Equity curve with intervention point">
-            <line x1="0" y1="55"  x2="600" y2="55"  stroke="#d8d4cc" stroke-dasharray="2 4"/>
-            <line x1="0" y1="110" x2="600" y2="110" stroke="#d8d4cc" stroke-dasharray="2 4"/>
-            <line x1="0" y1="165" x2="600" y2="165" stroke="#d8d4cc" stroke-dasharray="2 4"/>
-            <path d="M 0 110 L 70 95 L 140 130 L 210 175 L 280 200 L 350 215 L 420 215" fill="none" stroke="#8b1a1a" stroke-width="1.5" stroke-dasharray="4 4" opacity=".55"/>
-            <text x="425" y="212" font-family="JetBrains Mono" font-size="9" fill="#8b1a1a" opacity=".75">if loop ran</text>
-            <path d="M 0 110 L 70 95 L 140 130 L 210 145 L 280 142 L 350 122 L 420 95 L 500 78 L 600 65" fill="none" stroke="#1a5c3e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-            <line x1="210" y1="20" x2="210" y2="200" stroke="#1a5c3e" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
-            <circle cx="210" cy="145" r="6" fill="#faf9f6" stroke="#1a5c3e" stroke-width="2"/>
-            <circle cx="210" cy="145" r="2.5" fill="#1a5c3e"/>
-            <text x="218" y="32" font-family="JetBrains Mono" font-size="9" fill="#1a5c3e" letter-spacing=".06em">PSYRULE FIRED · 9:50</text>
-            <circle cx="70" cy="95" r="3" fill="#1a5c3e"/>
-            <circle cx="140" cy="130" r="3" fill="#8b1a1a"/>
-            <circle cx="180" cy="142" r="3" fill="#8b1a1a"/>
-          </svg>
-          <div class="chart-axis">
-            <span>9:00</span><span>10:00</span><span>11:00</span><span>12:00</span><span>13:00</span><span>14:00</span><span>15:00</span>
-          </div>
-          <div class="chart-legend">
-            <span><span class="lg-line"></span>Actual session</span>
-            <span><span class="lg-line dash"></span>If the loop had run</span>
+
+          <div class="iv-card scene-iv" data-scene-iv>
+            <div class="iv-meta">
+              <span class="iv-source">
+                <span class="iv-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M 12.33 5.5 A 5 5 0 1 0 12.33 10.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M 13.2 5 L 10.6 11" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+                <strong>PsyRule</strong>
+              </span>
+              <span>9:50 · now</span>
+            </div>
+            <div class="iv-headline">Pause. This is your <em>revenge loop.</em></div>
+            <div class="iv-body">Two stop-outs since 9:35. Re-entry compressed from 12 min to 4. Size up 35%. The same sequence ran in 6 prior sessions.</div>
+            <div class="iv-cost">
+              <div class="iv-cost-num">−$312</div>
+              <div class="iv-cost-cap">avg cost the last 6 times<br>this pattern fired</div>
+            </div>
+            <div class="iv-actions">
+              <button class="iv-btn" type="button">Override</button>
+              <button class="iv-btn primary" type="button">Hold 90 sec</button>
+            </div>
+            <div class="iv-foot">Rule #07 — your revenge loop</div>
           </div>
         </div>
 
-        <div class="notes-stack">
-          <div class="curve-mn">
-            <div class="t">9:35 → 9:46</div>
-            <div class="h">Two stop-outs in <em>11 minutes.</em></div>
-            <p>Re-entry compressed from 12 min to 4. Size up 35%. The same sequence ran in 6 prior sessions, and every time the third trade lost.</p>
+        <div class="scene-scrub" data-scene-scrub>
+          <div class="scene-track" data-scene-track>
+            <div class="scene-fill" data-scene-fill></div>
+            <button class="scene-handle" type="button" data-scene-handle
+                    role="slider" aria-label="Session timeline"
+                    aria-valuemin="0" aria-valuemax="90" aria-valuenow="80" aria-valuetext="10:50">
+              <span class="scene-handle-clock" data-scene-handle-clock>10:50</span>
+            </button>
           </div>
-          <div class="curve-mn amber">
-            <div class="t">9:50, moment of decision</div>
-            <div class="h">PsyRule named the loop <em>before</em> the third trade.</div>
-            <p>Not "you're tilted." Specifically: <em>this is your revenge loop, it has cost you $312 on average, hold 90 seconds.</em> The trader paused.</p>
+          <div class="scene-labels">
+            <span>9:30</span><span class="strong">9:50 · intervention</span><span>10:30</span><span>11:00</span>
           </div>
-          <div class="curve-mn">
-            <div class="t">13:02 → 15:00</div>
-            <div class="h">Session closed <em>green.</em></div>
-            <p>The dashed line is what the trader's history said would have happened. The solid line is what did.</p>
-          </div>
+          <div class="scene-hint" data-scene-hint>Drag to scrub the session. The intervention fires at 9:50.</div>
         </div>
       </div>
     </div>

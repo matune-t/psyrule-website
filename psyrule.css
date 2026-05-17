@@ -5,10 +5,102 @@
   --border:#d8d4cc; --border2:#c4c0b8;
   --ink:#0e0d0b; --ink2:#5c5a54; --ink3:#9e9b94;
   --green:#1a5c3e; --green2:#206e4a; --gl:#edf5f0; --gm:rgba(26,92,62,.12);
-  --amber:#7c4a00; --ambl:#fff8ed; --red:#8b1a1a; --redl:#fff0f0;
+  --amber:#7c4a00; --ambl:#fff8ed; --red:#a3372e; --redl:#fff0f0;
+
+  /* Motion tokens. ease-out for entrances, in-out for on-screen movement,
+     out-quart for the scrubber & chart reveals (more pronounced settle). */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Register surfaces. The page moves through four tonal beats. */
+  --bg-setup:       var(--cream);
+  --bg-diagnosis:   #fbfaf6;            /* clinical paper-white */
+  --bg-reckoning:   oklch(0.18 0.012 80); /* near-black drenched */
+  --bg-resolution:  var(--cream);
+
+  --ink-reckoning:  #f2efe7;
+  --ink2-reckoning: #b8b3a7;
+  --ink3-reckoning: #7a766e;
+  --border-reckoning: rgba(242,239,231,.08);
 }
 html { scroll-behavior: smooth; }
 body { background: var(--cream); color: var(--ink); font-family: 'Manrope', sans-serif; font-size: 16px; line-height: 1.65; overflow-x: hidden; }
+
+/* ========================================================================
+   REGISTERS — the page moves through four tonal beats.
+   Sections opt in with data-register="setup|diagnosis|reckoning|resolution".
+   ======================================================================== */
+[data-register="setup"]      { background: var(--bg-setup); }
+[data-register="diagnosis"]  { background: var(--bg-diagnosis); position: relative; }
+[data-register="diagnosis"]::before {
+  /* Hairline graph-paper overlay. Clinical, lab-notebook feel. */
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(to right,  rgba(14,13,11,.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14,13,11,.035) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 70% 90% at 50% 50%, #000 30%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 90% at 50% 50%, #000 30%, transparent 95%);
+}
+[data-register="diagnosis"] > * { position: relative; z-index: 1; }
+[data-register="reckoning"]  { background: var(--bg-reckoning); color: var(--ink-reckoning); }
+[data-register="resolution"] { background: var(--bg-resolution); }
+
+/* Reckoning register inherits the drenched palette. */
+[data-register="reckoning"] .section-tag,
+[data-register="reckoning"] .section-tag .ch { color: #c8a89e; }
+[data-register="reckoning"] .section-tag::before { background: #c8a89e; }
+[data-register="reckoning"] h2 { color: var(--ink-reckoning); }
+[data-register="reckoning"] h2 em { color: #d9a89e; }
+[data-register="reckoning"] p { color: var(--ink2-reckoning); }
+
+/* ========================================================================
+   COST DISPLAY — modeled cost is the loudest typographic moment.
+   Frame as a diagnosis (medical bill), not a SaaS hero-metric badge.
+   ======================================================================== */
+.cost-display {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(36px, 4vw, 64px);
+  line-height: 1;
+  letter-spacing: -.025em;
+  color: var(--red);
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+}
+.cost-display.lg { font-size: clamp(56px, 7vw, 112px); }
+[data-register="reckoning"] .cost-display { color: #d9988e; }
+[data-register="reckoning"] .cost-display::after {
+  /* Half-opacity hairline anchor on the dark register. */
+  content: ""; display: block; height: 1px; background: currentColor;
+  opacity: .35; margin-top: 6px;
+}
+
+/* ========================================================================
+   FOCUS — distinct from hover. Keyboard users see a real ring.
+   ======================================================================== */
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+[data-register="reckoning"] :focus-visible {
+  outline-color: #d9988e;
+}
+
+/* ========================================================================
+   MOTION GUARDS — gate hover for touch, kill transform motion on reduce.
+   ======================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /* NAV */
 nav { position: fixed; inset: 0 0 auto; z-index: 200; padding: 16px 56px 0; height: 88px; display: flex; align-items: flex-start; justify-content: center; pointer-events: none; }
@@ -88,9 +180,9 @@ h1 em { font-style: italic; color: var(--green); }
 .iv-headline em { color: var(--red); font-style: italic; }
 .iv-body { font-size: 14px; color: var(--ink2); line-height: 1.55; margin-bottom: 16px; }
 .iv-body b { color: var(--ink); font-weight: 600; }
-.iv-cost { display: flex; align-items: baseline; gap: 10px; padding: 12px 14px; background: var(--cream2); border-radius: 10px; margin-bottom: 16px; }
-.iv-cost-num { font-family: 'Fraunces', serif; font-weight: 800; font-size: 22px; color: var(--ink); letter-spacing: -.01em; }
-.iv-cost-cap { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink2); line-height: 1.4; }
+.iv-cost { display: flex; align-items: baseline; gap: 14px; padding: 14px 16px; background: #fbf4f1; border: 1px solid #ecd6cc; border-radius: 10px; margin-bottom: 16px; }
+.iv-cost-num { font-family: 'Fraunces', serif; font-weight: 800; font-size: 38px; color: var(--red); letter-spacing: -.025em; line-height: 1; font-variant-numeric: tabular-nums; }
+.iv-cost-cap { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink2); line-height: 1.4; }
 .iv-actions { display: flex; gap: 8px; }
 .iv-btn { flex: 1; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 13.5px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--border); background: var(--cream2); color: var(--ink2); text-align: center; cursor: pointer; transition: background .15s, color .15s, transform .15s; }
 .iv-btn:hover { background: var(--cream3); color: var(--ink); }
@@ -99,13 +191,238 @@ h1 em { font-style: italic; color: var(--green); }
 .iv-foot { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink3); letter-spacing: .04em; text-align: center; margin-top: 12px; }
 .moment-foot { position: relative; text-align: center; margin-top: 56px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink3); letter-spacing: .08em; text-transform: uppercase; }
 
-/* DIFF BAND */
-.diff-band { background: var(--ink); color: #f0ede7; padding: 80px 56px; }
+/* ========================================================================
+   SCENE — interactive moment scrubber. Drag to walk through the session;
+   the intervention card slides in at 9:50 and the ghost line peels off.
+   Default state (no JS): fully scrubbed, all content visible.
+   ======================================================================== */
+.scene { position: relative; display: flex; flex-direction: column; gap: 32px; }
+.scene-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 36px;
+  align-items: stretch;
+}
+
+.scene-chart {
+  position: relative;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 28px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.scene-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--ink3);
+  letter-spacing: .06em;
+}
+.scene-clock {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: .02em;
+  font-variant-numeric: tabular-nums;
+}
+.scene-meta-r { text-transform: uppercase; }
+
+.scene-svg {
+  width: 100%;
+  height: 220px;
+  display: block;
+  border-radius: 6px;
+}
+.scene-svg .scene-marker-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sceneMarkerPulse 2.4s var(--ease-out) infinite;
+}
+.scene-svg .scene-marker { transition: opacity 200ms var(--ease-out); }
+.scene-svg .scene-stops circle { opacity: 0; transition: opacity 200ms var(--ease-out); }
+.scene-svg .scene-stops text { opacity: 0; transition: opacity 200ms var(--ease-out); }
+.scene-svg .scene-stops.is-on circle { opacity: 1; }
+.scene-svg .scene-stops.is-on text { opacity: .85; }
+
+@keyframes sceneMarkerPulse {
+  0%   { transform: scale(1);   opacity: .9; }
+  60%  { transform: scale(3.2); opacity: 0; }
+  100% { transform: scale(3.2); opacity: 0; }
+}
+
+.scene-axis {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: .04em;
+  padding: 0 4px;
+}
+.scene-legend {
+  display: flex;
+  gap: 18px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--ink2);
+  flex-wrap: wrap;
+}
+.scene-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.scene-lg { width: 18px; height: 2px; border-radius: 2px; display: inline-block; }
+.scene-lg.green { background: var(--green); }
+.scene-lg.red { background: transparent; border-top: 2px dashed var(--red); height: 0; }
+
+/* Intervention card inside the scene */
+.scene-iv {
+  align-self: stretch;
+  max-width: none;
+  width: auto;
+  margin: 0;
+}
+
+/* Scrubber */
+.scene-scrub {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 6px 0;
+}
+.scene-track {
+  position: relative;
+  height: 6px;
+  background: var(--cream3);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.scene-track::before {
+  /* Tick at 9:50 — the intervention moment. */
+  content: "";
+  position: absolute;
+  left: 22.22%;
+  top: -5px;
+  bottom: -5px;
+  width: 1px;
+  background: var(--green);
+  opacity: .65;
+}
+.scene-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 100%;
+  background: var(--green);
+  border-radius: 3px;
+  transition: width 220ms var(--ease-out);
+}
+.scene-handle {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--green);
+  color: #fff;
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 6px 18px rgba(26,92,62,.32), inset 0 1px 0 rgba(255,255,255,.25);
+  transition: transform 220ms var(--ease-out), background 160ms var(--ease-out);
+  padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0;
+}
+.scene-handle::before {
+  content: "";
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(255,255,255,.85);
+  transition: transform 160ms var(--ease-out);
+}
+.scene-handle:hover::before, .scene-handle.is-grabbing::before { transform: scale(.5); }
+.scene-handle:active { transform: translate(-50%, -50%) scale(.92); }
+.scene-handle.is-grabbing { cursor: grabbing; background: var(--green2); }
+.scene-handle-clock {
+  position: absolute;
+  top: -36px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  background: var(--ink);
+  color: #f0ede7;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  opacity: 0;
+  transition: opacity 160ms var(--ease-out);
+  pointer-events: none;
+}
+.scene-handle:hover .scene-handle-clock,
+.scene-handle.is-grabbing .scene-handle-clock,
+.scene-handle:focus-visible .scene-handle-clock { opacity: 1; }
+
+.scene-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink3);
+  letter-spacing: .04em;
+  padding: 0 2px;
+}
+.scene-labels .strong { color: var(--green); }
+.scene-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--ink3);
+  letter-spacing: .02em;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* When JS takes over, hint becomes visible (default hidden to avoid layout
+   shift if JS fails). */
+.scene.is-live .scene-hint { color: var(--ink2); }
+
+/* Scrubber positioning when scene is live (JS-driven) */
+.scene.is-live .scene-fill { transition: width 60ms linear; }
+.scene.is-live .scene-handle { transition: left 60ms linear, transform 160ms var(--ease-out), background 160ms var(--ease-out); left: var(--scene-progress, 100%); }
+.scene.is-live .scene-fill { width: var(--scene-progress, 100%); }
+.scene.is-live .scene-iv {
+  opacity: 0;
+  transform: translateX(16px);
+  transition: opacity 220ms var(--ease-out), transform 240ms var(--ease-out);
+  pointer-events: none;
+}
+.scene.is-live .scene-iv.is-on {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* Reduced motion: keep scrub interactive but kill the pulse + transitions */
+@media (prefers-reduced-motion: reduce) {
+  .scene-svg .scene-marker-ring { animation: none; opacity: .3; }
+  .scene.is-live .scene-iv { transition: opacity 1ms; transform: none; }
+  .scene.is-live .scene-iv.is-on { transform: none; }
+}
+
+/* DIFF BAND — was a dark island; now a paper-white statement inside the
+   diagnosis register. The contrast comes from typography, not surface. */
+.diff-band { padding: 96px 56px 64px; }
 .diff-inner { max-width: 1200px; margin: 0 auto; }
-.diff-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #5c5a54; margin-bottom: 20px; }
-.diff-h { font-family: 'Fraunces', serif; font-weight: 800; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.05; letter-spacing: -.02em; color: #f0ede7; margin-bottom: 20px; }
-.diff-h em { color: #4cff8e; font-style: italic; }
-.diff-p { font-size: 16px; color: #888882; line-height: 1.7; font-weight: 300; }
+.diff-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--green); margin-bottom: 22px; display: flex; align-items: center; gap: 12px; }
+.diff-label::before, .diff-label::after { content: ""; width: 20px; height: 1px; background: var(--green); }
+.diff-h { font-family: 'Fraunces', serif; font-weight: 800; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.05; letter-spacing: -.02em; color: var(--ink); margin-bottom: 20px; }
+.diff-h em { color: var(--green); font-style: italic; }
+.diff-p { font-size: 16px; color: var(--ink2); line-height: 1.7; font-weight: 400; }
 .diff-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: #2a2826; border: 1px solid #2a2826; border-radius: 12px; overflow: hidden; }
 .diff-3-card { background: #181715; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; }
 .diff-3-card.on { background: linear-gradient(180deg, #0e1f15 0%, #0a1610 100%); }
@@ -115,15 +432,15 @@ h1 em { font-style: italic; color: var(--green); }
 .diff-3-line.on { background: rgba(76,255,142,.3); }
 .diff-3-body { font-size: 14px; color: #888882; line-height: 1.6; font-weight: 300; }
 
-/* MANIFESTO */
-.manifesto { max-width: 760px; margin: 0 auto; padding: 88px 56px; text-align: center; border-bottom: 1px solid var(--border); background: var(--cream); }
+/* MANIFESTO — inherits register surface, no own background */
+.manifesto { max-width: 760px; margin: 0 auto; padding: 88px 56px; text-align: center; border-bottom: 1px solid var(--border); }
 .manifesto-mark { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--green); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 24px; }
 .manifesto-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(22px, 2.6vw, 32px); line-height: 1.3; letter-spacing: -.01em; color: var(--ink); }
 .manifesto-text em { font-style: italic; color: var(--green); }
 .manifesto-attr { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink3); letter-spacing: .08em; margin-top: 28px; }
 
-/* PATTERNS */
-.patterns-section { padding: 110px 56px; background: var(--cream); border-bottom: 1px solid var(--border); }
+/* PATTERNS — inherits register surface, no own background */
+.patterns-section { padding: 110px 56px; border-bottom: 1px solid var(--border); }
 .patterns-inner { max-width: 1200px; margin: 0 auto; }
 .patterns-head { margin-bottom: 56px; max-width: 760px; }
 .section-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--green); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
@@ -142,10 +459,10 @@ h2 em { font-style: italic; color: var(--green); }
 .pattern-card-seq .pcs-end { color: var(--red); }
 .pattern-card-line { height: 1px; background: var(--border); }
 .pattern-card-body { font-size: 14.5px; color: var(--ink2); line-height: 1.65; font-weight: 300; }
-.pattern-card-cost { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; padding: 12px 14px; background: var(--gl); border: 1px solid var(--gm); border-radius: 8px; margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
-.pcc-label { font-size: 10px; color: var(--ink3); letter-spacing: .1em; text-transform: uppercase; }
-.pcc-amt { font-family: 'Fraunces', serif; font-style: italic; font-weight: 800; font-size: 22px; color: var(--green); letter-spacing: -.01em; line-height: 1; }
-.pcc-unit { font-size: 11px; color: var(--ink2); }
+.pattern-card-cost { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px 12px; padding: 16px 18px; background: #fbf4f1; border: 1px solid #ecd6cc; border-radius: 10px; margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+.pcc-label { font-size: 10px; color: var(--ink3); letter-spacing: .12em; text-transform: uppercase; width: 100%; }
+.pcc-amt { font-family: 'Fraunces', serif; font-style: normal; font-weight: 800; font-size: 40px; color: var(--red); letter-spacing: -.025em; line-height: 1; font-variant-numeric: tabular-nums; }
+.pcc-unit { font-size: 11px; color: var(--ink2); flex: 1; min-width: 0; }
 
 /* Compressed pattern row (landing) */
 .pattern-also { display: flex; flex-direction: column; gap: 8px; max-width: 720px; margin: 32px auto 0; }
@@ -157,8 +474,8 @@ h2 em { font-style: italic; color: var(--green); }
 .pattern-more-link { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--green); text-decoration: none; letter-spacing: .04em; padding: 12px 18px; border: 1px solid rgba(26,92,62,.25); border-radius: 999px; transition: background .15s; }
 .pattern-more-link:hover { background: var(--gl); }
 
-/* GAP */
-.gap-section { padding: 100px 56px; background: var(--white); border-bottom: 1px solid var(--border); }
+/* GAP — inherits register surface, no own background */
+.gap-section { padding: 100px 56px; border-bottom: 1px solid var(--border); }
 .gap-inner { max-width: 1200px; margin: 0 auto; }
 .gap-table-wrap { overflow-x: auto; }
 .gap-table { width: 100%; border-collapse: collapse; }
@@ -181,6 +498,91 @@ h2 em { font-style: italic; color: var(--green); }
 .gap-competitor-link:hover { color: var(--green); border-bottom-color: var(--green); }
 .gap-note { font-size: 12px; color: var(--ink3); font-family: 'JetBrains Mono', monospace; margin-top: 20px; text-align: center; }
 
+/* ========================================================================
+   RECKONING SECTION — the modeled cost as the loudest typographic moment.
+   Lives inside data-register="reckoning" (near-black drenched).
+   Frame: a ledger, not a dashboard. Read like a medical bill.
+   ======================================================================== */
+.reckoning-wrap { max-width: 1080px; margin: 0 auto; padding: 120px 56px 110px; }
+.reckoning-head { max-width: 720px; margin-bottom: 64px; }
+.reckoning-head h2 { color: var(--ink-reckoning); margin-bottom: 18px; }
+.reckoning-head h2 em { color: #d9a89e; font-style: italic; }
+.reckoning-sub { font-size: 15px; color: var(--ink2-reckoning); line-height: 1.7; font-weight: 400; max-width: 560px; }
+
+.reckoning-ledger { list-style: none; padding: 0; margin: 0 0 56px; display: flex; flex-direction: column; }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 28px;
+  align-items: baseline;
+  padding: 30px 0 28px;
+  border-bottom: 1px solid var(--border-reckoning);
+}
+.ledger-row:first-child { border-top: 1px solid var(--border-reckoning); }
+.ledger-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink3-reckoning);
+  letter-spacing: .14em;
+  align-self: center;
+}
+.ledger-name {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(20px, 2vw, 28px);
+  color: var(--ink-reckoning);
+  letter-spacing: -.01em;
+  line-height: 1.15;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ledger-name small {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--ink3-reckoning);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.ledger-row.blowup .cost-display { font-size: clamp(48px, 5vw, 80px); }
+.ledger-row.blowup .ledger-name { color: #e8c8c0; }
+
+.reckoning-foot {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: end;
+  padding: 32px 0 0;
+  border-top: 2px solid rgba(217, 152, 142, .25);
+}
+.reckoning-foot-l { display: flex; flex-direction: column; gap: 8px; }
+.reckoning-foot-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #d9988e;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.reckoning-foot-line {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink2-reckoning);
+  line-height: 1.4;
+}
+.reckoning-note {
+  margin-top: 48px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--ink3-reckoning);
+  letter-spacing: .04em;
+  line-height: 1.7;
+  max-width: 560px;
+}
+
 /* PRICING */
 .pricing-section { padding: 100px 56px; max-width: 1200px; margin: 0 auto; }
 .pricing-head { text-align: center; margin-bottom: 56px; }
@@ -197,7 +599,7 @@ h2 em { font-style: italic; color: var(--green); }
 .p-feats { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 32px; }
 .p-feats li { font-size: 14px; color: var(--ink2); display: flex; gap: 10px; }
 .pck { color: var(--green); flex-shrink: 0; }
-.p-btn { display: block; text-align: center; width: 100%; padding: 14px; border-radius: 8px; font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; background: transparent; color: var(--ink2); border: 1px solid var(--border2); transition: all .15s; text-decoration: none; }
+.p-btn { display: block; text-align: center; width: 100%; padding: 14px; border-radius: 8px; font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; background: transparent; color: var(--ink2); border: 1px solid var(--border2); transition: color 160ms var(--ease-out), border-color 160ms var(--ease-out), background 160ms var(--ease-out), transform 160ms var(--ease-out); text-decoration: none; }
 .p-btn:hover { color: var(--ink); border-color: var(--ink); }
 .p-btn.feat { background: var(--green); color: #fff; border-color: var(--green); }
 .p-btn.feat:hover { background: var(--green2); border-color: var(--green2); }
@@ -460,4 +862,133 @@ footer { padding: 32px 56px; border-top: 1px solid var(--border); display: flex;
   .report-rule-actions { flex-direction: row; }
   .report-rule-btn { flex: 1; }
   .gap-feature-cell { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+  /* Reckoning: ledger collapses, costs get their own row. */
+  .reckoning-wrap { padding: 80px 20px 72px; }
+  .reckoning-head { margin-bottom: 40px; }
+  .ledger-row { grid-template-columns: 40px 1fr; grid-template-areas: "num name" "num cost"; gap: 4px 16px; padding: 22px 0; }
+  .ledger-num { grid-area: num; align-self: start; padding-top: 6px; }
+  .ledger-name { grid-area: name; font-size: 19px; }
+  .ledger-row .cost-display { grid-area: cost; font-size: 44px !important; margin-top: 6px; }
+  .ledger-row.blowup .cost-display { font-size: 60px !important; }
+  .reckoning-foot { grid-template-columns: 1fr; gap: 20px; padding-top: 28px; align-items: start; }
+  .reckoning-foot .cost-display.lg { font-size: 64px; }
+
+  /* Cost block in moment card: reflow on phone. */
+  .iv-cost { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .iv-cost-num { font-size: 32px; }
+
+  /* Scene scrubber: stack chart above card. */
+  .scene-stage { grid-template-columns: 1fr; gap: 24px; }
+  .scene-chart { padding: 18px 18px 14px; }
+  .scene-clock { font-size: 18px; }
+  .scene-svg { height: 180px; }
+  .scene-legend { font-size: 9.5px; gap: 12px; }
+  .scene-iv { max-width: 100%; }
+  .scene-handle { width: 32px; height: 32px; }
+  .scene-handle-clock { display: none; }
+  .scene-hint { font-size: 9.5px; }
+}
+
+/* ========================================================================
+   POLISH SWEEP — applied after everything else so it wins on cascade order.
+   - Press feedback (scale on :active) for every pressable element.
+   - Hover effects gated behind hover-capable pointers (no touch ghost-hovers).
+   - Custom easings replace built-in `ease-out` for crisper feel.
+   - Stagger entry on grouped items (pattern cards, ledger rows, faq items).
+   ======================================================================== */
+
+/* Press feedback — Emil's rule: every pressable element needs to feel heard. */
+.nav-btn:active,
+.btn-p:active,
+.btn-g:active,
+.iv-btn:active,
+.p-btn:active,
+.pattern-more-link:active,
+.why-toggle:active,
+.report-rule-btn:active {
+  transform: scale(0.97);
+}
+
+/* Upgrade transitions to custom easing + always include transform. */
+.btn-p { transition: background 200ms var(--ease-out), transform 160ms var(--ease-out); }
+.btn-g { transition: color 200ms var(--ease-out), border-color 200ms var(--ease-out), transform 160ms var(--ease-out); }
+.nav-btn { transition: background 200ms var(--ease-out), transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out); }
+.iv-btn { transition: background 200ms var(--ease-out), color 200ms var(--ease-out), transform 160ms var(--ease-out); }
+.pattern-more-link { transition: background 200ms var(--ease-out), transform 160ms var(--ease-out); }
+.why-toggle { transition: color 200ms var(--ease-out), border-color 200ms var(--ease-out), background 200ms var(--ease-out), transform 160ms var(--ease-out); }
+.pa-row { transition: background 200ms var(--ease-out), border-color 200ms var(--ease-out); }
+.pattern-card { transition: border-color 240ms var(--ease-out), box-shadow 240ms var(--ease-out); }
+.nav-link { transition: color 200ms var(--ease-out), background 200ms var(--ease-out); }
+
+/* Gate transform-based hover effects behind real hover devices. Without this,
+   touch taps fire :hover and leave the element stuck in the lifted state. */
+@media (hover: hover) and (pointer: fine) {
+  .nav-btn:hover { transform: translateY(-1px); }
+  .iv-btn.primary:hover { transform: translateY(-1px); }
+}
+@media not all and (hover: hover) {
+  .nav-btn:hover, .iv-btn.primary:hover, .pattern-card:hover { transform: none; box-shadow: none; }
+}
+
+/* Entry stagger for pattern cards on the home page. @starting-style is the
+   modern path; the fallback is a one-off animation with delay per nth-child. */
+.pattern-card {
+  animation: psyriseIn 480ms var(--ease-out) both;
+}
+.pattern-card:nth-child(1) { animation-delay: 80ms; }
+.pattern-card:nth-child(2) { animation-delay: 130ms; }
+.pa-row {
+  animation: psyriseIn 420ms var(--ease-out) both;
+}
+.pa-row:nth-child(1) { animation-delay: 80ms; }
+.pa-row:nth-child(2) { animation-delay: 140ms; }
+.pa-row:nth-child(3) { animation-delay: 200ms; }
+.ledger-row {
+  animation: psyriseIn 520ms var(--ease-out) both;
+}
+.ledger-row:nth-child(1) { animation-delay: 120ms; }
+.ledger-row:nth-child(2) { animation-delay: 180ms; }
+.ledger-row:nth-child(3) { animation-delay: 240ms; }
+.ledger-row:nth-child(4) { animation-delay: 320ms; }
+
+@keyframes psyriseIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Tooltip-style scrubber clock: pulse off after release. */
+@media (prefers-reduced-motion: reduce) {
+  .pattern-card, .pa-row, .ledger-row { animation: none; }
+}
+
+/* Section divider — reuse the signal motif as a faint pulsing ring at the
+   junction between registers. Decorative; respects reduced motion. */
+section[data-register] + section[data-register] {
+  position: relative;
+}
+section[data-register] + section[data-register]::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 0 rgba(26,92,62,.36);
+  animation: heroPulse 3.6s ease-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+section[data-register="reckoning"] + section[data-register]::before,
+section[data-register] + section[data-register="reckoning"]::before {
+  /* Where the dividing dot crosses into the dark register, use the warm
+     burgundy so the dot reads against either background. */
+  background: #d9988e;
+  box-shadow: 0 0 0 0 rgba(217,152,142,.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  section[data-register] + section[data-register]::before { animation: none; }
 }

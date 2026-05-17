@@ -106,7 +106,8 @@ twq('config','YOUR_X_PIXEL_ID');
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO · SETUP register -->
+<section data-register="setup" class="register-setup">
 <div class="hero hero-minimal" style="text-align:center;">
   <div class="hero-eyebrow"><span class="hero-pulse"></span> Behavioral risk for prop firm &amp; funded traders</div>
   <h1>You already know<br>it's about <em class="hero-action">psychology.</em><br>Now do something<br>about it.</h1>
@@ -136,23 +137,84 @@ twq('config','YOUR_X_PIXEL_ID');
     <div class="moment-eyebrow">A real moment from a real session</div>
     <h2 class="moment-title">9:50. Two stop-outs in. <em>Before the third trade.</em></h2>
 
-    <div class="moment-grid">
-      <div class="mn-l">
-        <span class="mn-tag">Trigger</span>
-        First stop-out at <strong>9:35</strong>.<br>
-        You re-entered in <strong>4 minutes</strong> instead of your usual 12.
-        <small>↳ same sequence as 6 prior sessions</small>
-        <div class="mn-divider"></div>
-        <span class="mn-tag amber">Behavior</span>
-        Position size <strong>+35%</strong> above plan.<br>
-        Mood logged: <em>impatient</em>.
-        <small>↳ classic revenge-loop signature</small>
-      </div>
+    <!-- INTERACTIVE SCENE — drag the scrubber to walk through the session.
+         Without JS, the final post-intervention state shows by default. -->
+    <div class="scene" data-scene>
+      <div class="scene-stage">
+        <div class="scene-chart" data-scene-chart>
+          <div class="scene-meta">
+            <span class="scene-clock" data-scene-clock>09:50</span>
+            <span class="scene-meta-r">EUR-USD · 5m · funded acct</span>
+          </div>
 
-      <div class="iv-stage">
-        <div class="iv-connector l"></div>
-        <div class="iv-connector r"></div>
-        <div class="iv-card">
+          <svg class="scene-svg" viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true">
+            <!-- Subtle horizontal baseline -->
+            <line x1="0" y1="40" x2="600" y2="40" stroke="#d8d4cc" stroke-width="1" opacity=".5"/>
+            <text x="6" y="34" font-family="JetBrains Mono, monospace" font-size="9" fill="#9e9b94" letter-spacing="0.04em">+0</text>
+            <text x="6" y="200" font-family="JetBrains Mono, monospace" font-size="9" fill="#9e9b94" letter-spacing="0.04em">−$1.2k</text>
+
+            <!-- Daily-loss-limit warning band -->
+            <rect x="0" y="180" width="600" height="32" fill="#a3372e" opacity="0.06"/>
+            <text x="594" y="174" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9" fill="#a3372e" letter-spacing="0.06em">DAILY LOSS LIMIT</text>
+
+            <!-- Ghost path (what would have happened if the loop ran).
+                 Hidden behind clip-path until the scrubber passes 9:50. -->
+            <g class="scene-ghost-g" clip-path="url(#sceneGhostClip)">
+              <path class="scene-ghost"
+                    d="M 133 80 L 175 110 L 230 140 L 310 170 L 430 195 L 600 205"
+                    fill="none" stroke="#a3372e" stroke-width="2" stroke-dasharray="5 4"
+                    stroke-linecap="round" stroke-linejoin="round" opacity="0.65"/>
+            </g>
+            <defs>
+              <!-- Default width=467 (fully revealed) so no-JS users see the
+                   complete ghost line. JS clips it back to 0 on .is-live. -->
+              <clipPath id="sceneGhostClip">
+                <rect class="scene-ghost-clip" x="133" y="0" width="467" height="220"/>
+              </clipPath>
+              <clipPath id="sceneRealClip">
+                <rect class="scene-real-clip" x="0" y="0" width="600" height="220"/>
+              </clipPath>
+            </defs>
+
+            <!-- Real path (what actually happened with intervention) -->
+            <g clip-path="url(#sceneRealClip)">
+              <path class="scene-real"
+                    d="M 0 50 L 33 78 L 53 80 L 100 79 L 133 80 L 240 78 L 380 77 L 600 76"
+                    fill="none" stroke="#1a5c3e" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+
+            <!-- Stop-out markers -->
+            <g class="scene-stops">
+              <circle cx="33" cy="78" r="3.5" fill="#a3372e"/>
+              <circle cx="53" cy="80" r="3.5" fill="#a3372e"/>
+              <text x="33" y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#a3372e">SO1</text>
+              <text x="53" y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#a3372e">SO2</text>
+            </g>
+
+            <!-- Intervention marker (pulses when scrubber crosses 9:50) -->
+            <g class="scene-marker" transform="translate(133 80)">
+              <circle class="scene-marker-ring" r="4" fill="none" stroke="#1a5c3e" stroke-width="1.25"/>
+              <circle r="4.5" fill="#1a5c3e"/>
+              <line x1="0" y1="-4" x2="0" y2="-20" stroke="#1a5c3e" stroke-width="1" opacity="0.6"/>
+              <text x="0" y="-26" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#1a5c3e" letter-spacing="0.06em">PAUSE 9:50</text>
+            </g>
+
+            <!-- Playhead -->
+            <line class="scene-playhead" x1="0" y1="20" x2="0" y2="212" stroke="#0e0d0b" stroke-width="1" opacity="0.18" stroke-dasharray="2 3"/>
+          </svg>
+
+          <div class="scene-axis">
+            <span>9:30</span><span>9:50</span><span>10:30</span><span>11:00</span>
+          </div>
+
+          <div class="scene-legend">
+            <span><i class="scene-lg green"></i>Your actual P&amp;L · with the pause</span>
+            <span><i class="scene-lg red"></i>Modeled · if the loop had run</span>
+          </div>
+        </div>
+
+        <div class="iv-card scene-iv" data-scene-iv>
           <div class="iv-meta">
             <span class="iv-source">
               <span class="iv-mark"><svg viewBox="0 0 16 16" fill="none"><path d="M 12.33 5.5 A 5 5 0 1 0 12.33 10.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/><path d="M 13.2 5 L 10.6 11" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></span>
@@ -174,25 +236,32 @@ twq('config','YOUR_X_PIXEL_ID');
         </div>
       </div>
 
-      <div class="mn-r">
-        <span class="mn-tag red">Cost if ignored</span>
-        Avg <strong>−$312</strong> when this loop runs to completion.<br>
-        Two more like it ends the challenge.
-        <small>↳ modeled from your own history</small>
-        <div class="mn-divider"></div>
-        <span class="mn-tag">PsyRule's job</span>
-        Surface the loop <em>before</em> the third trade.<br>
-        Not after.
-        <small>↳ a 60-90 sec pause based on your profile, then your call</small>
+      <div class="scene-scrub" data-scene-scrub>
+        <div class="scene-track" data-scene-track>
+          <div class="scene-fill" data-scene-fill></div>
+          <button class="scene-handle" type="button" data-scene-handle
+                  role="slider" aria-label="Session timeline"
+                  aria-valuemin="0" aria-valuemax="90" aria-valuenow="80" aria-valuetext="10:50">
+            <span class="scene-handle-clock" data-scene-handle-clock>10:50</span>
+          </button>
+        </div>
+        <div class="scene-labels">
+          <span>9:30</span><span class="strong">9:50 · intervention</span><span>10:30</span><span>11:00</span>
+        </div>
+        <div class="scene-hint" data-scene-hint>Drag to scrub the session. The intervention fires at 9:50.</div>
       </div>
     </div>
 
     <div class="moment-foot">The intervention · annotated · how PsyRule actually shows up</div>
   </div>
 </div>
+</section><!-- /SETUP -->
 
-<!-- DIFF BAND -->
-<div class="diff-band" style="margin-top:80px;">
+<!-- DIAGNOSIS register · positioning + manifesto + patterns + gap -->
+<section data-register="diagnosis" class="register-diagnosis">
+
+<!-- POSITIONING BAND (was the dark "diff" island) -->
+<div class="diff-band">
   <div class="diff-inner" style="text-align:center;max-width:780px;margin:0 auto;">
     <div class="diff-label" style="display:flex;justify-content:center;">The behavioral layer</div>
     <div class="diff-h" style="font-size:clamp(32px, 3.6vw, 52px);">Not a journal. Not a blocker.<br><em>A behavioral risk layer.</em></div>
@@ -313,6 +382,55 @@ twq('config','YOUR_X_PIXEL_ID');
   </div>
 </div>
 
+</section><!-- /DIAGNOSIS -->
+
+<!-- RECKONING register · the modeled cost in big numbers -->
+<section data-register="reckoning" class="register-reckoning">
+<div class="reckoning-wrap" id="reckoning">
+  <div class="reckoning-head">
+    <div class="section-tag"><span class="ch">03</span>The reckoning</div>
+    <h2>Four loops. <em>One running tally.</em></h2>
+    <p class="reckoning-sub">Modeled from internal beta and historical data, not customer averages. Your numbers will differ. The shape will not.</p>
+  </div>
+
+  <ol class="reckoning-ledger" aria-label="Modeled cost per pattern">
+    <li class="ledger-row">
+      <span class="ledger-num">01</span>
+      <span class="ledger-name">Revenge loop<small>per event</small></span>
+      <span class="cost-display">−$312</span>
+    </li>
+    <li class="ledger-row">
+      <span class="ledger-num">02</span>
+      <span class="ledger-name">Green-day giveback<small>per green day</small></span>
+      <span class="cost-display">−$184</span>
+    </li>
+    <li class="ledger-row">
+      <span class="ledger-num">03</span>
+      <span class="ledger-name">Late-session decay<small>per late trade</small></span>
+      <span class="cost-display">−$96</span>
+    </li>
+    <li class="ledger-row blowup">
+      <span class="ledger-num">04</span>
+      <span class="ledger-name">Challenge pressure<small>per blown challenge</small></span>
+      <span class="cost-display">−$2,000</span>
+    </li>
+  </ol>
+
+  <div class="reckoning-foot">
+    <div class="reckoning-foot-l">
+      <div class="reckoning-foot-tag">A typical week, two loops fired</div>
+      <div class="reckoning-foot-line">Revenge loop ×1 + giveback ×1, no blowup.</div>
+    </div>
+    <div class="cost-display lg">−$496</div>
+  </div>
+
+  <p class="reckoning-note">PsyRule's job is to surface the loop before it costs you the next number on this page.</p>
+</div>
+</section><!-- /RECKONING -->
+
+<!-- RESOLUTION register · questions, pricing, footer -->
+<section data-register="resolution" class="register-resolution">
+
 <!-- OBJECTIONS -->
 <div class="patterns-section" id="questions">
   <div class="patterns-inner">
@@ -413,6 +531,8 @@ twq('config','YOUR_X_PIXEL_ID');
     <strong>PsyRule is a behavioral analytics tool.</strong> It does not provide trading, financial, or investment advice. Trading involves risk; past performance does not predict future results. Cost figures shown on this site are modeled from a small private beta and internal historical data, not customer averages. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.
   </div>
 </footer>
+
+</section><!-- /RESOLUTION -->
 
 <script>
   document.querySelectorAll('.why-toggle').forEach(function(btn){
